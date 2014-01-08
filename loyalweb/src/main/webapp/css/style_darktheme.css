@@ -1,0 +1,57 @@
+body {
+background: url("../images/front/bodyBg.jpg") no-repeat scroll center 0 #000000;
+color: #D3D1CF;
+}
+.mainContainer {
+	background: #000;
+		-webkit-box-shadow: #FFAB51 0 0 .25em;
+	-moz-box-shadow: #FFAB51 0 0 .25em;
+	box-shadow: #FFAB51 0 0 .25em;
+
+}
+h1 {
+	color: #FFAB51 ;
+}
+#HdrLogo .logo_text h1{  color:#FFAB51;}
+#HdrLogo .logo_text span{ color:#fff;}
+.featureBlock {
+	background: #444444;
+}
+.featureBlock ul li a, .innerpage ul li a {
+	color: #fff;
+	text-decoration: none
+}
+h3,h4 {
+	color: #FFAB51;
+}
+.newsPanel .newsListing li h4 a{color:#FFAB51}
+p {
+	color: #D3D1CF;
+}
+.newsPanel .newsListing li .date_posted {
+	color: #2DAAE1;
+}
+.header .rightHead .topRow .skipContent a {
+	color:  #D3D1CF;
+}
+.innerPageContent a{ color:#FFAB51;}
+a {
+	color:#D3D1CF;
+}
+.paginglinks_container{ color:#474340}
+.content_part h4 a{
+color:#FFAB51;
+}
+.content_part {
+	border-bottom: 1px dotted #EEEEEE;
+}
+.header .rightHead .topRow .screenReader a {
+	color: #D3D1CF;
+}
+#HdrLogo {
+ background:url('../images/front/emblem_czech.png') no-repeat
+}
+.table_detailpage {
+	color: #D3D1CF;
+}
+#intabdiv p{ padding-bottom:0px; color:#444444;}
