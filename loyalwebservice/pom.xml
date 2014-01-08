@@ -4,7 +4,7 @@
 	<groupId>com.loyal.web</groupId>
 	<artifactId>loyalservice</artifactId>
 	<packaging>war</packaging>
-	<name>Loyal Web service</name>
+	<name>loyalservice</name>
 	<description>Webservices for all Loyal services</description>
 	<parent>
 		<groupId>com.loyal.base</groupId>
