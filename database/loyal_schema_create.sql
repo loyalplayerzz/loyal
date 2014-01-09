@@ -189,6 +189,50 @@ CREATE TABLE `loyal`.`badge_details` (
        `active` BIT,
         primary key (`id`)
     );
+    
+    create table `loyal`.`loyalpoints_master`(
+        `id` INT not null auto_increment,
+       `bet` INT,
+       `currency` VARCHAR(20),
+       `points` INT,
+        primary key (`id`)
+    );
+    
+alter table `loyal`.`players_loyalpoints`
+        add constraint FK_players_loyalpoints_points
+      FOREIGN KEY (loyalpoints_id) REFERENCES loyalpoints_master(id)
+      ON UPDATE CASCADE 
+      ON DELETE CASCADE,
+      
+        add constraint FK_players_loyalpoints_players
+      FOREIGN KEY (player_id) REFERENCES players_master(id)
+      ON UPDATE CASCADE 
+      ON DELETE RESTRICT
+    ;
+
+alter table `loyal`.`players_level`
+        add constraint FK_players_level_levels
+      FOREIGN KEY (level_id) REFERENCES level_master(id)
+      ON UPDATE CASCADE 
+      ON DELETE CASCADE,
+      
+        add constraint FK_players_level_players
+      FOREIGN KEY (player_id) REFERENCES players_master(id)
+      ON UPDATE CASCADE 
+      ON DELETE RESTRICT
+    ;
+
+alter table `loyal`.`players_badge`
+        add constraint FK_players_badge_badge
+      FOREIGN KEY (badge_id) REFERENCES badge_details(id)
+      ON UPDATE CASCADE 
+      ON DELETE CASCADE,
+      
+        add constraint FK_players_badge_player
+      FOREIGN KEY (player_id) REFERENCES players_master(id)
+      ON UPDATE CASCADE 
+      ON DELETE RESTRICT
+    ;
 
   -- --------------------------------------------------------------------------------
 -- Routine DDL
