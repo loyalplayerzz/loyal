@@ -1,0 +1,65 @@
+package com.loyal.persistence.dto;
+
+import javax.persistence.Column;
+import javax.persistence.Entity;
+import javax.persistence.GeneratedValue;
+import static javax.persistence.GenerationType.IDENTITY;
+import javax.persistence.Id;
+import javax.persistence.Table;
+
+/**
+ * BadgeLoyalGift entity. @author MyEclipse Persistence Tools
+ */
+@Entity
+@Table(name = "badge_loyal_gift", catalog = "loyal")
+public class BadgeLoyalGiftDTO implements java.io.Serializable {
+
+	// Fields
+
+	private Integer id;
+	private Integer badgeId;
+	private Integer loyalGiftId;
+
+	// Constructors
+
+	/** default constructor */
+	public BadgeLoyalGiftDTO() {
+	}
+
+	/** full constructor */
+	public BadgeLoyalGiftDTO(Integer badgeId, Integer loyalGiftId) {
+		this.badgeId = badgeId;
+		this.loyalGiftId = loyalGiftId;
+	}
+
+	// Property accessors
+	@Id
+	@GeneratedValue(strategy = IDENTITY)
+	@Column(name = "id", unique = true, nullable = false)
+	public Integer getId() {
+		return this.id;
+	}
+
+	public void setId(Integer id) {
+		this.id = id;
+	}
+
+	@Column(name = "badge_id", nullable = false)
+	public Integer getBadgeId() {
+		return this.badgeId;
+	}
+
+	public void setBadgeId(Integer badgeId) {
+		this.badgeId = badgeId;
+	}
+
+	@Column(name = "loyal_gift_id", nullable = false)
+	public Integer getLoyalGiftId() {
+		return this.loyalGiftId;
+	}
+
+	public void setLoyalGiftId(Integer loyalGiftId) {
+		this.loyalGiftId = loyalGiftId;
+	}
+
+}

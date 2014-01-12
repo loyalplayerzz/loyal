@@ -2,93 +2,98 @@ package com.loyal.persistence.dto;
 
 import javax.persistence.Column;
 import javax.persistence.Entity;
+import javax.persistence.GeneratedValue;
+import static javax.persistence.GenerationType.IDENTITY;
 import javax.persistence.Id;
 import javax.persistence.Table;
-
 
 /**
  * AlgoTotalroundsongame entity. @author MyEclipse Persistence Tools
  */
 @Entity
-@Table(name="ALGO_TOTALROUNDSONGAME"
-    ,catalog="mysql"
-)
+@Table(name = "algo_totalroundsongame", catalog = "loyal")
+public class AlgoTotalroundsongameDTO implements java.io.Serializable {
 
-public class AlgoTotalroundsongameDTO  implements java.io.Serializable {
+	// Fields
 
+	private Integer id;
+	private String algoId;
+	private Integer providers;
+	private Integer games;
+	private Integer noOfGameRounds;
+	private Integer noOfDays;
 
-    // Fields    
+	// Constructors
 
-     private Integer badgeId;
-     private Integer providerName;
-     private Integer noOfRounds;
-     private String nameOfGames;
+	/** default constructor */
+	public AlgoTotalroundsongameDTO() {
+	}
 
+	/** full constructor */
+	public AlgoTotalroundsongameDTO(String algoId, Integer providers,
+			Integer games, Integer noOfGameRounds, Integer noOfDays) {
+		this.algoId = algoId;
+		this.providers = providers;
+		this.games = games;
+		this.noOfGameRounds = noOfGameRounds;
+		this.noOfDays = noOfDays;
+	}
 
-    // Constructors
+	// Property accessors
+	@Id
+	@GeneratedValue(strategy = IDENTITY)
+	@Column(name = "id", unique = true, nullable = false)
+	public Integer getId() {
+		return this.id;
+	}
 
-    /** default constructor */
-    public AlgoTotalroundsongameDTO() {
-    }
+	public void setId(Integer id) {
+		this.id = id;
+	}
 
-    
-    /** full constructor */
-    public AlgoTotalroundsongameDTO(Integer providerName, Integer noOfRounds, String nameOfGames) {
-        this.providerName = providerName;
-        this.noOfRounds = noOfRounds;
-        this.nameOfGames = nameOfGames;
-    }
+	@Column(name = "algo_id", nullable = false, length = 10)
+	public String getAlgoId() {
+		return this.algoId;
+	}
 
-   
-    // Property accessors
-    //@SequenceGenerator(name="generator")@Id @GeneratedValue(strategy=SEQUENCE, generator="generator")
-    @Id
-    @Column(name="badge_id", unique=true, nullable=false)
+	public void setAlgoId(String algoId) {
+		this.algoId = algoId;
+	}
 
-    public Integer getBadgeId() {
-        return this.badgeId;
-    }
-    
-    public void setBadgeId(Integer badgeId) {
-        this.badgeId = badgeId;
-    }
-    
-    @Column(name="provider_name")
+	@Column(name = "providers", nullable = false)
+	public Integer getProviders() {
+		return this.providers;
+	}
 
-    public Integer getProviderName() {
-        return this.providerName;
-    }
-    
-    public void setProviderName(Integer providerName) {
-        this.providerName = providerName;
-    }
-    
-    @Column(name="no_of_rounds")
+	public void setProviders(Integer providers) {
+		this.providers = providers;
+	}
 
-    public Integer getNoOfRounds() {
-        return this.noOfRounds;
-    }
-    
-    public void setNoOfRounds(Integer noOfRounds) {
-        this.noOfRounds = noOfRounds;
-    }
-    
-    @Column(name="name_of_games", length=100)
+	@Column(name = "games", nullable = false)
+	public Integer getGames() {
+		return this.games;
+	}
 
-    public String getNameOfGames() {
-        return this.nameOfGames;
-    }
-    
-    public void setNameOfGames(String nameOfGames) {
-        this.nameOfGames = nameOfGames;
-    }
-   
+	public void setGames(Integer games) {
+		this.games = games;
+	}
 
+	@Column(name = "no_of_game_rounds", nullable = false)
+	public Integer getNoOfGameRounds() {
+		return this.noOfGameRounds;
+	}
 
+	public void setNoOfGameRounds(Integer noOfGameRounds) {
+		this.noOfGameRounds = noOfGameRounds;
+	}
 
+	@Column(name = "no_of_days", nullable = false)
+	public Integer getNoOfDays() {
+		return this.noOfDays;
+	}
 
-
-
-
+	public void setNoOfDays(Integer noOfDays) {
+		this.noOfDays = noOfDays;
+	}
 
 }

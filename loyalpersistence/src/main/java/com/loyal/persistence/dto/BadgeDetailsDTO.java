@@ -1,130 +1,121 @@
 package com.loyal.persistence.dto;
 
+import java.sql.Timestamp;
 import javax.persistence.Column;
 import javax.persistence.Entity;
+import javax.persistence.GeneratedValue;
+import static javax.persistence.GenerationType.IDENTITY;
 import javax.persistence.Id;
 import javax.persistence.Table;
-
 
 /**
  * BadgeDetails entity. @author MyEclipse Persistence Tools
  */
 @Entity
-@Table(name="BADGE_DETAILS"
-    ,catalog="mysql"
-)
+@Table(name = "badge_details", catalog = "loyal")
+public class BadgeDetailsDTO implements java.io.Serializable {
 
-public class BadgeDetailsDTO  implements java.io.Serializable {
+	// Fields
 
+	private Integer badgeId;
+	private String badgeName;
+	private String badgeDescription;
+	private String algoType;
+	private String algoId;
+	private String active;
+	private Timestamp createdDate;
 
-    // Fields    
+	// Constructors
 
-     private Integer id;
-     private String badgeName;
-     private String badgeDescription;
-     private String description;
-     private Integer algoId;
-     private Boolean active;
-     private String image;
+	/** default constructor */
+	public BadgeDetailsDTO() {
+	}
 
+	/** minimal constructor */
+	public BadgeDetailsDTO(String badgeName, String algoType, String algoId,
+			String active, Timestamp createdDate) {
+		this.badgeName = badgeName;
+		this.algoType = algoType;
+		this.algoId = algoId;
+		this.active = active;
+		this.createdDate = createdDate;
+	}
 
-    // Constructors
+	/** full constructor */
+	public BadgeDetailsDTO(String badgeName, String badgeDescription,
+			String algoType, String algoId, String active, Timestamp createdDate) {
+		this.badgeName = badgeName;
+		this.badgeDescription = badgeDescription;
+		this.algoType = algoType;
+		this.algoId = algoId;
+		this.active = active;
+		this.createdDate = createdDate;
+	}
 
-    /** default constructor */
-    public BadgeDetailsDTO() {
-    }
+	// Property accessors
+	@Id
+	@GeneratedValue(strategy = IDENTITY)
+	@Column(name = "badge_id", unique = true, nullable = false)
+	public Integer getBadgeId() {
+		return this.badgeId;
+	}
 
-    
-    /** full constructor */
-    public BadgeDetailsDTO(String badgeName, String badgeDescription, String description, Integer algoId, Boolean active, String image) {
-        this.badgeName = badgeName;
-        this.badgeDescription = badgeDescription;
-        this.description = description;
-        this.algoId = algoId;
-        this.active = active;
-        this.image = image;
-    }
+	public void setBadgeId(Integer badgeId) {
+		this.badgeId = badgeId;
+	}
 
-   
-    // Property accessors
-    //@SequenceGenerator(name="generator")@Id @GeneratedValue(strategy=SEQUENCE, generator="generator")
-    @Id
-    @Column(name="id", unique=true, nullable=false)
+	@Column(name = "badge_name", nullable = false, length = 75)
+	public String getBadgeName() {
+		return this.badgeName;
+	}
 
-    public Integer getId() {
-        return this.id;
-    }
-    
-    public void setId(Integer id) {
-        this.id = id;
-    }
-    
-    @Column(name="badge_name", length=15)
+	public void setBadgeName(String badgeName) {
+		this.badgeName = badgeName;
+	}
 
-    public String getBadgeName() {
-        return this.badgeName;
-    }
-    
-    public void setBadgeName(String badgeName) {
-        this.badgeName = badgeName;
-    }
-    
-    @Column(name="badge_description", length=100)
+	@Column(name = "badge_description", length = 200)
+	public String getBadgeDescription() {
+		return this.badgeDescription;
+	}
 
-    public String getBadgeDescription() {
-        return this.badgeDescription;
-    }
-    
-    public void setBadgeDescription(String badgeDescription) {
-        this.badgeDescription = badgeDescription;
-    }
-    
-    @Column(name="description", length=100)
+	public void setBadgeDescription(String badgeDescription) {
+		this.badgeDescription = badgeDescription;
+	}
 
-    public String getDescription() {
-        return this.description;
-    }
-    
-    public void setDescription(String description) {
-        this.description = description;
-    }
-    
-    @Column(name="algo_id")
+	@Column(name = "algo_type", nullable = false, length = 10)
+	public String getAlgoType() {
+		return this.algoType;
+	}
 
-    public Integer getAlgoId() {
-        return this.algoId;
-    }
-    
-    public void setAlgoId(Integer algoId) {
-        this.algoId = algoId;
-    }
-    
-    @Column(name="active")
+	public void setAlgoType(String algoType) {
+		this.algoType = algoType;
+	}
 
-    public Boolean getActive() {
-        return this.active;
-    }
-    
-    public void setActive(Boolean active) {
-        this.active = active;
-    }
-    
-    @Column(name="image", length=100)
+	@Column(name = "algo_id", nullable = false, length = 10)
+	public String getAlgoId() {
+		return this.algoId;
+	}
 
-    public String getImage() {
-        return this.image;
-    }
-    
-    public void setImage(String image) {
-        this.image = image;
-    }
-   
+	public void setAlgoId(String algoId) {
+		this.algoId = algoId;
+	}
 
+	@Column(name = "active", nullable = false, length = 1)
+	public String getActive() {
+		return this.active;
+	}
 
+	public void setActive(String active) {
+		this.active = active;
+	}
 
+	@Column(name = "created_date", nullable = false, length = 19)
+	public Timestamp getCreatedDate() {
+		return this.createdDate;
+	}
 
-
-
-
+	public void setCreatedDate(Timestamp createdDate) {
+		this.createdDate = createdDate;
+	}
 
 }

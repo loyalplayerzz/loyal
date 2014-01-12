@@ -8,34 +8,29 @@ import javax.persistence.Id;
 import javax.persistence.Table;
 
 /**
- * LoyalGifts entity. @author MyEclipse Persistence Tools
+ * LevelMaster entity. @author MyEclipse Persistence Tools
  */
 @Entity
-@Table(name = "loyal_gifts", catalog = "loyal")
-public class LoyalGiftsDTO implements java.io.Serializable {
+@Table(name = "level_master", catalog = "loyal")
+public class LevelMasterDTO implements java.io.Serializable {
 
 	// Fields
 
 	private Integer id;
-	private String giftType;
-	private String name;
 	private String description;
-	private Integer points;
+	private Integer levelPoints;
 	private String image;
 
 	// Constructors
 
 	/** default constructor */
-	public LoyalGiftsDTO() {
+	public LevelMasterDTO() {
 	}
 
 	/** full constructor */
-	public LoyalGiftsDTO(String giftType, String name, String description,
-			Integer points, String image) {
-		this.giftType = giftType;
-		this.name = name;
+	public LevelMasterDTO(String description, Integer levelPoints, String image) {
 		this.description = description;
-		this.points = points;
+		this.levelPoints = levelPoints;
 		this.image = image;
 	}
 
@@ -51,24 +46,6 @@ public class LoyalGiftsDTO implements java.io.Serializable {
 		this.id = id;
 	}
 
-	@Column(name = "gift_type", length = 2)
-	public String getGiftType() {
-		return this.giftType;
-	}
-
-	public void setGiftType(String giftType) {
-		this.giftType = giftType;
-	}
-
-	@Column(name = "name", length = 100)
-	public String getName() {
-		return this.name;
-	}
-
-	public void setName(String name) {
-		this.name = name;
-	}
-
 	@Column(name = "description", length = 100)
 	public String getDescription() {
 		return this.description;
@@ -78,13 +55,13 @@ public class LoyalGiftsDTO implements java.io.Serializable {
 		this.description = description;
 	}
 
-	@Column(name = "points")
-	public Integer getPoints() {
-		return this.points;
+	@Column(name = "level_points")
+	public Integer getLevelPoints() {
+		return this.levelPoints;
 	}
 
-	public void setPoints(Integer points) {
-		this.points = points;
+	public void setLevelPoints(Integer levelPoints) {
+		this.levelPoints = levelPoints;
 	}
 
 	@Column(name = "image", length = 100)

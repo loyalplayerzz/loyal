@@ -10,31 +10,30 @@ import org.slf4j.Logger;
 import org.slf4j.LoggerFactory;
 
 import com.loyal.persistence.BaseHibernateDAO;
-import com.loyal.persistence.dto.BadgeDetailsDTO;
+import com.loyal.persistence.dto.LoyalpointsMasterDTO;
+
 
 /**
  * A data access object (DAO) providing persistence and search support for
- * BadgeDetails entities. Transaction control of the save(), update() and
+ * LoyalpointsMaster entities. Transaction control of the save(), update() and
  * delete() operations can directly support Spring container-managed
  * transactions or they can be augmented to handle user-managed Spring
  * transactions. Each of these methods provides additional information for how
  * to configure it for the desired type of transaction control.
  * 
- * @see com.BadgeDetailsDTO.hibernate.BadgeDetails
+ * @see com.LoyalpointsMasterDTO.hibernate.LoyalpointsMaster
  * @author MyEclipse Persistence Tools
  */
-public class BadgeDetailsDAO extends BaseHibernateDAO {
+public class LoyalpointsMasterDAO extends BaseHibernateDAO {
 	private static final Logger log = LoggerFactory
-			.getLogger(BadgeDetailsDAO.class);
+			.getLogger(LoyalpointsMasterDAO.class);
 	// property constants
-	public static final String BADGE_NAME = "badgeName";
-	public static final String BADGE_DESCRIPTION = "badgeDescription";
-	public static final String ALGO_TYPE = "algoType";
-	public static final String ALGO_ID = "algoId";
-	public static final String ACTIVE = "active";
+	public static final String BET = "bet";
+	public static final String CURRENCY = "currency";
+	public static final String POINTS = "points";
 
-	public void save(BadgeDetailsDTO transientInstance) {
-		log.debug("saving BadgeDetails instance");
+	public void save(LoyalpointsMasterDTO transientInstance) {
+		log.debug("saving LoyalpointsMaster instance");
 		try {
 			getSession().save(transientInstance);
 			log.debug("save successful");
@@ -44,8 +43,8 @@ public class BadgeDetailsDAO extends BaseHibernateDAO {
 		}
 	}
 
-	public void delete(BadgeDetailsDTO persistentInstance) {
-		log.debug("deleting BadgeDetails instance");
+	public void delete(LoyalpointsMasterDTO persistentInstance) {
+		log.debug("deleting LoyalpointsMaster instance");
 		try {
 			getSession().delete(persistentInstance);
 			log.debug("delete successful");
@@ -55,11 +54,11 @@ public class BadgeDetailsDAO extends BaseHibernateDAO {
 		}
 	}
 
-	public BadgeDetailsDTO findById(java.lang.Integer id) {
-		log.debug("getting BadgeDetails instance with id: " + id);
+	public LoyalpointsMasterDTO findById(java.lang.Integer id) {
+		log.debug("getting LoyalpointsMaster instance with id: " + id);
 		try {
-			BadgeDetailsDTO instance = (BadgeDetailsDTO) getSession().get(
-					"com.test.hibernate.BadgeDetails", id);
+			LoyalpointsMasterDTO instance = (LoyalpointsMasterDTO) getSession().get(
+					"com.test.hibernate.LoyalpointsMaster", id);
 			return instance;
 		} catch (RuntimeException re) {
 			log.error("get failed", re);
@@ -67,11 +66,11 @@ public class BadgeDetailsDAO extends BaseHibernateDAO {
 		}
 	}
 
-	public List<BadgeDetailsDTO> findByExample(BadgeDetailsDTO instance) {
-		log.debug("finding BadgeDetails instance by example");
+	public List<LoyalpointsMasterDTO> findByExample(LoyalpointsMasterDTO instance) {
+		log.debug("finding LoyalpointsMaster instance by example");
 		try {
-			List<BadgeDetailsDTO> results = (List<BadgeDetailsDTO>) getSession()
-					.createCriteria("com.test.hibernate.BadgeDetails")
+			List<LoyalpointsMasterDTO> results = (List<LoyalpointsMasterDTO>) getSession()
+					.createCriteria("com.test.hibernate.LoyalpointsMaster")
 					.add(create(instance)).list();
 			log.debug("find by example successful, result size: "
 					+ results.size());
@@ -83,10 +82,10 @@ public class BadgeDetailsDAO extends BaseHibernateDAO {
 	}
 
 	public List findByProperty(String propertyName, Object value) {
-		log.debug("finding BadgeDetails instance with property: "
+		log.debug("finding LoyalpointsMaster instance with property: "
 				+ propertyName + ", value: " + value);
 		try {
-			String queryString = "from BadgeDetails as model where model."
+			String queryString = "from LoyalpointsMaster as model where model."
 					+ propertyName + "= ?";
 			Query queryObject = getSession().createQuery(queryString);
 			queryObject.setParameter(0, value);
@@ -97,30 +96,22 @@ public class BadgeDetailsDAO extends BaseHibernateDAO {
 		}
 	}
 
-	public List<BadgeDetailsDTO> findByBadgeName(Object badgeName) {
-		return findByProperty(BADGE_NAME, badgeName);
+	public List<LoyalpointsMasterDTO> findByBet(Object bet) {
+		return findByProperty(BET, bet);
 	}
 
-	public List<BadgeDetailsDTO> findByBadgeDescription(Object badgeDescription) {
-		return findByProperty(BADGE_DESCRIPTION, badgeDescription);
+	public List<LoyalpointsMasterDTO> findByCurrency(Object currency) {
+		return findByProperty(CURRENCY, currency);
 	}
 
-	public List<BadgeDetailsDTO> findByAlgoType(Object algoType) {
-		return findByProperty(ALGO_TYPE, algoType);
-	}
-
-	public List<BadgeDetailsDTO> findByAlgoId(Object algoId) {
-		return findByProperty(ALGO_ID, algoId);
-	}
-
-	public List<BadgeDetailsDTO> findByActive(Object active) {
-		return findByProperty(ACTIVE, active);
+	public List<LoyalpointsMasterDTO> findByPoints(Object points) {
+		return findByProperty(POINTS, points);
 	}
 
 	public List findAll() {
-		log.debug("finding all BadgeDetails instances");
+		log.debug("finding all LoyalpointsMaster instances");
 		try {
-			String queryString = "from BadgeDetails";
+			String queryString = "from LoyalpointsMaster";
 			Query queryObject = getSession().createQuery(queryString);
 			return queryObject.list();
 		} catch (RuntimeException re) {
@@ -129,10 +120,10 @@ public class BadgeDetailsDAO extends BaseHibernateDAO {
 		}
 	}
 
-	public BadgeDetailsDTO merge(BadgeDetailsDTO detachedInstance) {
-		log.debug("merging BadgeDetails instance");
+	public LoyalpointsMasterDTO merge(LoyalpointsMasterDTO detachedInstance) {
+		log.debug("merging LoyalpointsMaster instance");
 		try {
-			BadgeDetailsDTO result = (BadgeDetailsDTO) getSession().merge(
+			LoyalpointsMasterDTO result = (LoyalpointsMasterDTO) getSession().merge(
 					detachedInstance);
 			log.debug("merge successful");
 			return result;
@@ -142,8 +133,8 @@ public class BadgeDetailsDAO extends BaseHibernateDAO {
 		}
 	}
 
-	public void attachDirty(BadgeDetailsDTO instance) {
-		log.debug("attaching dirty BadgeDetails instance");
+	public void attachDirty(LoyalpointsMasterDTO instance) {
+		log.debug("attaching dirty LoyalpointsMaster instance");
 		try {
 			getSession().saveOrUpdate(instance);
 			log.debug("attach successful");
@@ -153,8 +144,8 @@ public class BadgeDetailsDAO extends BaseHibernateDAO {
 		}
 	}
 
-	public void attachClean(BadgeDetailsDTO instance) {
-		log.debug("attaching clean BadgeDetails instance");
+	public void attachClean(LoyalpointsMasterDTO instance) {
+		log.debug("attaching clean LoyalpointsMaster instance");
 		try {
 			getSession().lock(instance, LockMode.NONE);
 			log.debug("attach successful");

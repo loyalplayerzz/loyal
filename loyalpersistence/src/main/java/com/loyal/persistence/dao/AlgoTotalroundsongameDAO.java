@@ -6,48 +6,35 @@ import java.util.List;
 
 import org.hibernate.LockMode;
 import org.hibernate.Query;
-import org.hibernate.Session;
-import org.hibernate.SessionFactory;
 import org.slf4j.Logger;
 import org.slf4j.LoggerFactory;
 
+import com.loyal.persistence.BaseHibernateDAO;
 import com.loyal.persistence.dto.AlgoTotalroundsongameDTO;
 
 /**
  * A data access object (DAO) providing persistence and search support for
- * AlgoTotalroundsongameDTO entities. Transaction control of the save(), update()
+ * AlgoTotalroundsongame entities. Transaction control of the save(), update()
  * and delete() operations can directly support Spring container-managed
  * transactions or they can be augmented to handle user-managed Spring
  * transactions. Each of these methods provides additional information for how
  * to configure it for the desired type of transaction control.
  * 
- * @see com.AlgoTotalroundsongameDTODTO.hibernate.AlgoTotalroundsongameDTO
+ * @see com.AlgoTotalroundsongameDTO.hibernate.AlgoTotalroundsongame
  * @author MyEclipse Persistence Tools
  */
-public class AlgoTotalroundsongameDAO {
+public class AlgoTotalroundsongameDAO extends BaseHibernateDAO {
 	private static final Logger log = LoggerFactory
 			.getLogger(AlgoTotalroundsongameDAO.class);
 	// property constants
-	public static final String PROVIDER_NAME = "providerName";
-	public static final String NO_OF_ROUNDS = "noOfRounds";
-	public static final String NAME_OF_GAMES = "nameOfGames";
-
-	private SessionFactory sessionFactory;
-
-	public SessionFactory getSessionFactory() {
-		return sessionFactory;
-	}
-
-	public void setSessionFactory(SessionFactory sessionFactory) {
-		this.sessionFactory = sessionFactory;
-	}
-
-	private Session getSession() {
-		return sessionFactory.getCurrentSession();
-	}
+	public static final String ALGO_ID = "algoId";
+	public static final String PROVIDERS = "providers";
+	public static final String GAMES = "games";
+	public static final String NO_OF_GAME_ROUNDS = "noOfGameRounds";
+	public static final String NO_OF_DAYS = "noOfDays";
 
 	public void save(AlgoTotalroundsongameDTO transientInstance) {
-		log.debug("saving AlgoTotalroundsongameDTO instance");
+		log.debug("saving AlgoTotalroundsongame instance");
 		try {
 			getSession().save(transientInstance);
 			log.debug("save successful");
@@ -58,7 +45,7 @@ public class AlgoTotalroundsongameDAO {
 	}
 
 	public void delete(AlgoTotalroundsongameDTO persistentInstance) {
-		log.debug("deleting AlgoTotalroundsongameDTO instance");
+		log.debug("deleting AlgoTotalroundsongame instance");
 		try {
 			getSession().delete(persistentInstance);
 			log.debug("delete successful");
@@ -69,10 +56,10 @@ public class AlgoTotalroundsongameDAO {
 	}
 
 	public AlgoTotalroundsongameDTO findById(java.lang.Integer id) {
-		log.debug("getting AlgoTotalroundsongameDTO instance with id: " + id);
+		log.debug("getting AlgoTotalroundsongame instance with id: " + id);
 		try {
 			AlgoTotalroundsongameDTO instance = (AlgoTotalroundsongameDTO) getSession()
-					.get("com.test.hibernate.AlgoTotalroundsongameDTO", id);
+					.get("com.test.hibernate.AlgoTotalroundsongame", id);
 			return instance;
 		} catch (RuntimeException re) {
 			log.error("get failed", re);
@@ -82,10 +69,10 @@ public class AlgoTotalroundsongameDAO {
 
 	public List<AlgoTotalroundsongameDTO> findByExample(
 			AlgoTotalroundsongameDTO instance) {
-		log.debug("finding AlgoTotalroundsongameDTO instance by example");
+		log.debug("finding AlgoTotalroundsongame instance by example");
 		try {
 			List<AlgoTotalroundsongameDTO> results = (List<AlgoTotalroundsongameDTO>) getSession()
-					.createCriteria("com.test.hibernate.AlgoTotalroundsongameDTO")
+					.createCriteria("com.test.hibernate.AlgoTotalroundsongame")
 					.add(create(instance)).list();
 			log.debug("find by example successful, result size: "
 					+ results.size());
@@ -97,10 +84,10 @@ public class AlgoTotalroundsongameDAO {
 	}
 
 	public List findByProperty(String propertyName, Object value) {
-		log.debug("finding AlgoTotalroundsongameDTO instance with property: "
+		log.debug("finding AlgoTotalroundsongame instance with property: "
 				+ propertyName + ", value: " + value);
 		try {
-			String queryString = "from AlgoTotalroundsongameDTO as model where model."
+			String queryString = "from AlgoTotalroundsongame as model where model."
 					+ propertyName + "= ?";
 			Query queryObject = getSession().createQuery(queryString);
 			queryObject.setParameter(0, value);
@@ -111,22 +98,31 @@ public class AlgoTotalroundsongameDAO {
 		}
 	}
 
-	public List<AlgoTotalroundsongameDTO> findByProviderName(Object providerName) {
-		return findByProperty(PROVIDER_NAME, providerName);
+	public List<AlgoTotalroundsongameDTO> findByAlgoId(Object algoId) {
+		return findByProperty(ALGO_ID, algoId);
 	}
 
-	public List<AlgoTotalroundsongameDTO> findByNoOfRounds(Object noOfRounds) {
-		return findByProperty(NO_OF_ROUNDS, noOfRounds);
+	public List<AlgoTotalroundsongameDTO> findByProviders(Object providers) {
+		return findByProperty(PROVIDERS, providers);
 	}
 
-	public List<AlgoTotalroundsongameDTO> findByNameOfGames(Object nameOfGames) {
-		return findByProperty(NAME_OF_GAMES, nameOfGames);
+	public List<AlgoTotalroundsongameDTO> findByGames(Object games) {
+		return findByProperty(GAMES, games);
+	}
+
+	public List<AlgoTotalroundsongameDTO> findByNoOfGameRounds(
+			Object noOfGameRounds) {
+		return findByProperty(NO_OF_GAME_ROUNDS, noOfGameRounds);
+	}
+
+	public List<AlgoTotalroundsongameDTO> findByNoOfDays(Object noOfDays) {
+		return findByProperty(NO_OF_DAYS, noOfDays);
 	}
 
 	public List findAll() {
-		log.debug("finding all AlgoTotalroundsongameDTO instances");
+		log.debug("finding all AlgoTotalroundsongame instances");
 		try {
-			String queryString = "from AlgoTotalroundsongameDTO";
+			String queryString = "from AlgoTotalroundsongame";
 			Query queryObject = getSession().createQuery(queryString);
 			return queryObject.list();
 		} catch (RuntimeException re) {
@@ -136,7 +132,7 @@ public class AlgoTotalroundsongameDAO {
 	}
 
 	public AlgoTotalroundsongameDTO merge(AlgoTotalroundsongameDTO detachedInstance) {
-		log.debug("merging AlgoTotalroundsongameDTO instance");
+		log.debug("merging AlgoTotalroundsongame instance");
 		try {
 			AlgoTotalroundsongameDTO result = (AlgoTotalroundsongameDTO) getSession()
 					.merge(detachedInstance);
@@ -149,7 +145,7 @@ public class AlgoTotalroundsongameDAO {
 	}
 
 	public void attachDirty(AlgoTotalroundsongameDTO instance) {
-		log.debug("attaching dirty AlgoTotalroundsongameDTO instance");
+		log.debug("attaching dirty AlgoTotalroundsongame instance");
 		try {
 			getSession().saveOrUpdate(instance);
 			log.debug("attach successful");
@@ -160,7 +156,7 @@ public class AlgoTotalroundsongameDAO {
 	}
 
 	public void attachClean(AlgoTotalroundsongameDTO instance) {
-		log.debug("attaching clean AlgoTotalroundsongameDTO instance");
+		log.debug("attaching clean AlgoTotalroundsongame instance");
 		try {
 			getSession().lock(instance, LockMode.NONE);
 			log.debug("attach successful");

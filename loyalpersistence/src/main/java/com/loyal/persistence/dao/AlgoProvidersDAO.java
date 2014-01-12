@@ -10,31 +10,30 @@ import org.slf4j.Logger;
 import org.slf4j.LoggerFactory;
 
 import com.loyal.persistence.BaseHibernateDAO;
-import com.loyal.persistence.dto.BadgeDetailsDTO;
+import com.loyal.persistence.dto.AlgoProvidersDTO;
 
 /**
  * A data access object (DAO) providing persistence and search support for
- * BadgeDetails entities. Transaction control of the save(), update() and
+ * AlgoProviders entities. Transaction control of the save(), update() and
  * delete() operations can directly support Spring container-managed
  * transactions or they can be augmented to handle user-managed Spring
  * transactions. Each of these methods provides additional information for how
  * to configure it for the desired type of transaction control.
  * 
- * @see com.BadgeDetailsDTO.hibernate.BadgeDetails
+ * @see com.AlgoProvidersDTO.hibernate.AlgoProviders
  * @author MyEclipse Persistence Tools
  */
-public class BadgeDetailsDAO extends BaseHibernateDAO {
+public class AlgoProvidersDAO extends BaseHibernateDAO {
 	private static final Logger log = LoggerFactory
-			.getLogger(BadgeDetailsDAO.class);
+			.getLogger(AlgoProvidersDAO.class);
 	// property constants
-	public static final String BADGE_NAME = "badgeName";
-	public static final String BADGE_DESCRIPTION = "badgeDescription";
-	public static final String ALGO_TYPE = "algoType";
 	public static final String ALGO_ID = "algoId";
+	public static final String ALGO_TYPE = "algoType";
+	public static final String PROVIDER = "provider";
 	public static final String ACTIVE = "active";
 
-	public void save(BadgeDetailsDTO transientInstance) {
-		log.debug("saving BadgeDetails instance");
+	public void save(AlgoProvidersDTO transientInstance) {
+		log.debug("saving AlgoProviders instance");
 		try {
 			getSession().save(transientInstance);
 			log.debug("save successful");
@@ -44,8 +43,8 @@ public class BadgeDetailsDAO extends BaseHibernateDAO {
 		}
 	}
 
-	public void delete(BadgeDetailsDTO persistentInstance) {
-		log.debug("deleting BadgeDetails instance");
+	public void delete(AlgoProvidersDTO persistentInstance) {
+		log.debug("deleting AlgoProviders instance");
 		try {
 			getSession().delete(persistentInstance);
 			log.debug("delete successful");
@@ -55,11 +54,11 @@ public class BadgeDetailsDAO extends BaseHibernateDAO {
 		}
 	}
 
-	public BadgeDetailsDTO findById(java.lang.Integer id) {
-		log.debug("getting BadgeDetails instance with id: " + id);
+	public AlgoProvidersDTO findById(java.lang.Integer id) {
+		log.debug("getting AlgoProviders instance with id: " + id);
 		try {
-			BadgeDetailsDTO instance = (BadgeDetailsDTO) getSession().get(
-					"com.test.hibernate.BadgeDetails", id);
+			AlgoProvidersDTO instance = (AlgoProvidersDTO) getSession().get(
+					"com.test.hibernate.AlgoProviders", id);
 			return instance;
 		} catch (RuntimeException re) {
 			log.error("get failed", re);
@@ -67,11 +66,11 @@ public class BadgeDetailsDAO extends BaseHibernateDAO {
 		}
 	}
 
-	public List<BadgeDetailsDTO> findByExample(BadgeDetailsDTO instance) {
-		log.debug("finding BadgeDetails instance by example");
+	public List<AlgoProvidersDTO> findByExample(AlgoProvidersDTO instance) {
+		log.debug("finding AlgoProviders instance by example");
 		try {
-			List<BadgeDetailsDTO> results = (List<BadgeDetailsDTO>) getSession()
-					.createCriteria("com.test.hibernate.BadgeDetails")
+			List<AlgoProvidersDTO> results = (List<AlgoProvidersDTO>) getSession()
+					.createCriteria("com.test.hibernate.AlgoProviders")
 					.add(create(instance)).list();
 			log.debug("find by example successful, result size: "
 					+ results.size());
@@ -83,10 +82,10 @@ public class BadgeDetailsDAO extends BaseHibernateDAO {
 	}
 
 	public List findByProperty(String propertyName, Object value) {
-		log.debug("finding BadgeDetails instance with property: "
+		log.debug("finding AlgoProviders instance with property: "
 				+ propertyName + ", value: " + value);
 		try {
-			String queryString = "from BadgeDetails as model where model."
+			String queryString = "from AlgoProviders as model where model."
 					+ propertyName + "= ?";
 			Query queryObject = getSession().createQuery(queryString);
 			queryObject.setParameter(0, value);
@@ -97,30 +96,26 @@ public class BadgeDetailsDAO extends BaseHibernateDAO {
 		}
 	}
 
-	public List<BadgeDetailsDTO> findByBadgeName(Object badgeName) {
-		return findByProperty(BADGE_NAME, badgeName);
-	}
-
-	public List<BadgeDetailsDTO> findByBadgeDescription(Object badgeDescription) {
-		return findByProperty(BADGE_DESCRIPTION, badgeDescription);
-	}
-
-	public List<BadgeDetailsDTO> findByAlgoType(Object algoType) {
-		return findByProperty(ALGO_TYPE, algoType);
-	}
-
-	public List<BadgeDetailsDTO> findByAlgoId(Object algoId) {
+	public List<AlgoProvidersDTO> findByAlgoId(Object algoId) {
 		return findByProperty(ALGO_ID, algoId);
 	}
 
-	public List<BadgeDetailsDTO> findByActive(Object active) {
+	public List<AlgoProvidersDTO> findByAlgoType(Object algoType) {
+		return findByProperty(ALGO_TYPE, algoType);
+	}
+
+	public List<AlgoProvidersDTO> findByProvider(Object provider) {
+		return findByProperty(PROVIDER, provider);
+	}
+
+	public List<AlgoProvidersDTO> findByActive(Object active) {
 		return findByProperty(ACTIVE, active);
 	}
 
 	public List findAll() {
-		log.debug("finding all BadgeDetails instances");
+		log.debug("finding all AlgoProviders instances");
 		try {
-			String queryString = "from BadgeDetails";
+			String queryString = "from AlgoProviders";
 			Query queryObject = getSession().createQuery(queryString);
 			return queryObject.list();
 		} catch (RuntimeException re) {
@@ -129,10 +124,10 @@ public class BadgeDetailsDAO extends BaseHibernateDAO {
 		}
 	}
 
-	public BadgeDetailsDTO merge(BadgeDetailsDTO detachedInstance) {
-		log.debug("merging BadgeDetails instance");
+	public AlgoProvidersDTO merge(AlgoProvidersDTO detachedInstance) {
+		log.debug("merging AlgoProviders instance");
 		try {
-			BadgeDetailsDTO result = (BadgeDetailsDTO) getSession().merge(
+			AlgoProvidersDTO result = (AlgoProvidersDTO) getSession().merge(
 					detachedInstance);
 			log.debug("merge successful");
 			return result;
@@ -142,8 +137,8 @@ public class BadgeDetailsDAO extends BaseHibernateDAO {
 		}
 	}
 
-	public void attachDirty(BadgeDetailsDTO instance) {
-		log.debug("attaching dirty BadgeDetails instance");
+	public void attachDirty(AlgoProvidersDTO instance) {
+		log.debug("attaching dirty AlgoProviders instance");
 		try {
 			getSession().saveOrUpdate(instance);
 			log.debug("attach successful");
@@ -153,8 +148,8 @@ public class BadgeDetailsDAO extends BaseHibernateDAO {
 		}
 	}
 
-	public void attachClean(BadgeDetailsDTO instance) {
-		log.debug("attaching clean BadgeDetails instance");
+	public void attachClean(AlgoProvidersDTO instance) {
+		log.debug("attaching clean AlgoProviders instance");
 		try {
 			getSession().lock(instance, LockMode.NONE);
 			log.debug("attach successful");
