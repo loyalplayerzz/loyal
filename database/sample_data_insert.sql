@@ -38,3 +38,7 @@ INSERT INTO `loyal`.`algo_providers` (`algo_id`, `algo_type`, `provider`, `activ
 INSERT INTO `loyal`.`algo_providers` (`algo_id`, `algo_type`, `provider`, `active`) VALUES ('TROG-2', 'TROG', 'provider2', 'Y');
 INSERT INTO `loyal`.`algo_providers` (`algo_id`, `algo_type`, `provider`, `active`) VALUES ('TROG-2', 'TROG', 'provider3', 'Y');
 INSERT INTO `loyal`.`algo_providers` (`algo_id`, `algo_type`, `provider`, `active`) VALUES ('TROG-5', 'TROG', 'provider4', 'Y');
+
+INSERT INTO `loyal`.`jobs_details` (`job_name`) VALUES ('MASTER_DATA');
+INSERT INTO `loyal`.`jobs_details` (`job_name`) VALUES ('SUMMARY_DATA');
+INSERT INTO `loyal`.`jobs_details` (`job_name`) VALUES ('BADGE_DETAILS');
