@@ -13,7 +13,7 @@
 		<module>loyalcalculate</module>
 		<module>loyalweb</module>
 		<module>loyalwebservice</module>
-		<!--<module>badges-core</module>
-		<module>dist</module>-->
+		<module>badges-core</module>
+		<!-- <module>dist</module>-->
 	</modules>
 </project>
