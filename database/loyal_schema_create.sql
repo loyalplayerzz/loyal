@@ -198,6 +198,14 @@ CREATE TABLE `loyal`.`badge_details` (
         primary key (`id`)
     );
     
+    CREATE TABLE `loyal`.`jobs_details` (
+	  `id` INT NOT NULL AUTO_INCREMENT,
+	  `job_name` VARCHAR(45) NOT NULL,
+	  `active` CHAR NOT NULL DEFAULT 'Y',
+	  PRIMARY KEY (`id`)
+	);
+	
+    
 alter table `loyal`.`players_loyalpoints`
         add constraint FK_players_loyalpoints_points
       FOREIGN KEY (loyalpoints_id) REFERENCES loyalpoints_master(id)
