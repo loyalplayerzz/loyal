@@ -6,15 +6,15 @@ import java.util.List;
 import org.springframework.beans.factory.annotation.Autowired;
 
 import com.loyal.persistence.dao.GameRoundSummaryDAO;
-import com.loyal.persistence.dao.LevelDAO;
-import com.loyal.persistence.dao.LoyalpointsDAO;
-import com.loyal.persistence.dao.PlayersDAO;
+import com.loyal.persistence.dao.LevelMasterDAO;
+import com.loyal.persistence.dao.LoyalpointsMasterDAO;
 import com.loyal.persistence.dao.PlayersLevelDAO;
 import com.loyal.persistence.dao.PlayersLoyalpointsDAO;
+import com.loyal.persistence.dao.PlayersMasterDAO;
 import com.loyal.persistence.dto.GameRoundSummaryDTO;
-import com.loyal.persistence.dto.PlayersDTO;
 import com.loyal.persistence.dto.PlayersLevelDTO;
 import com.loyal.persistence.dto.PlayersLoyalpointsDTO;
+import com.loyal.persistence.dto.PlayersMasterDTO;
 
 
 
@@ -58,13 +58,13 @@ public class PlayerLoyalPointsCalculation {
 	}
 	
 	@Autowired
-	public PlayersDAO playersDAO;
+	public PlayersMasterDAO playersDAO;
 
-	public PlayersDAO getPlayersDAO() {
+	public PlayersMasterDAO getPlayersDAO() {
 		return playersDAO;
 	}
 
-	public void setPlayersDAO(PlayersDAO playersDAO) {
+	public void setPlayersDAO(PlayersMasterDAO playersDAO) {
 		this.playersDAO = playersDAO;
 	}
 	
@@ -80,13 +80,13 @@ public class PlayerLoyalPointsCalculation {
 	}
 
 	@Autowired
-	public LevelDAO levelDAO;
+	public LevelMasterDAO levelDAO;
 	
-	public LevelDAO getLevelDAO() {
+	public LevelMasterDAO getLevelDAO() {
 		return levelDAO;
 	}
 
-	public void setLevelDAO(LevelDAO levelDAO) {
+	public void setLevelDAO(LevelMasterDAO levelDAO) {
 		this.levelDAO = levelDAO;
 	}
 
@@ -102,13 +102,13 @@ public class PlayerLoyalPointsCalculation {
 	}
 	
 	@Autowired
-	public LoyalpointsDAO loyalPointsDAO;
+	public LoyalpointsMasterDAO loyalPointsDAO;
 
-	public LoyalpointsDAO getLoyalPointsDAO() {
+	public LoyalpointsMasterDAO getLoyalPointsDAO() {
 		return loyalPointsDAO;
 	}
 
-	public void setLoyalPointsDAO(LoyalpointsDAO loyalPointsDAO) {
+	public void setLoyalPointsDAO(LoyalpointsMasterDAO loyalPointsDAO) {
 		this.loyalPointsDAO = loyalPointsDAO;
 	}
 
@@ -128,8 +128,8 @@ public class PlayerLoyalPointsCalculation {
 			playerID = Integer.valueOf(gameRoundDTO.getPlayerId());
 			
 			// Retrieve PlayerID from existing table to variable existingPlayerID
-			PlayersDTO playerDTO = playersDAO.findById(playerID);
-			int totalBetAmt = 0;
+			PlayersMasterDTO playerDTO = playersDAO.findById(playerID);
+			double totalBetAmt = 0;
 			if(playerDTO != null){
 				// update the player with existing betAmt+newbetAmt
 				totalBetAmt = playerDTO.getBetAmt()+gameRoundDTO.getTotalBet().intValue();

@@ -6,6 +6,7 @@ import java.util.List;
 
 import org.hibernate.LockMode;
 import org.hibernate.Query;
+import org.hibernate.criterion.Restrictions;
 import org.slf4j.Logger;
 import org.slf4j.LoggerFactory;
 
@@ -65,6 +66,16 @@ public class LevelMasterDAO extends BaseHibernateDAO {
 			throw re;
 		}
 	}
+	
+	public Integer getLevelIDFromPoints(Integer points){
+        List<LevelMasterDTO> levelList = getSession().createCriteria(LevelMasterDTO.class).add(Restrictions.gt("points", points)).list();
+                if(levelList==null || levelList.isEmpty()){
+                        return 1;
+                } else {
+                        return levelList.get(0).getId()-1;
+                }
+        }
+
 
 	public List<LevelMasterDTO> findByExample(LevelMasterDTO instance) {
 		log.debug("finding LevelMaster instance by example");
