@@ -7,9 +7,7 @@ public class Level {
 	
 	private Integer levelID;
 	
-	private String descriptionEn;
-	
-	private String descriptionSV;
+	private String description;
 	
 	private int levelPoints;
 	
@@ -31,22 +29,14 @@ public class Level {
 		this.levelID = levelID;
 	}
 
-	public String getDescriptionEn() {
-		return descriptionEn;
+	public String getDescription() {
+		return description;
 	}
 
-	public void setDescriptionEn(String descriptionEn) {
-		this.descriptionEn = descriptionEn;
+	public void setDescription(String description) {
+		this.description = description;
 	}
-
-	public String getDescriptionSV() {
-		return descriptionSV;
-	}
-
-	public void setDescriptionSV(String descriptionSV) {
-		this.descriptionSV = descriptionSV;
-	}
-
+	
 	public int getLevelPoints() {
 		return levelPoints;
 	}

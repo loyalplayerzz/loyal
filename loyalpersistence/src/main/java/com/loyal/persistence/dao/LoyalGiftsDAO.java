@@ -118,7 +118,7 @@ public class LoyalGiftsDAO extends BaseHibernateDAO {
 		return findByProperty(IMAGE, image);
 	}
 
-	public List findAll() {
+	public List<LoyalGiftsDTO> findAll() {
 		log.debug("finding all LoyalGifts instances");
 		try {
 			String queryString = "from LoyalGifts";

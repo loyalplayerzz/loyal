@@ -5,25 +5,25 @@ import java.util.List;
 
 import org.springframework.beans.factory.annotation.Autowired;
 
-import com.loyal.persistence.dao.LevelDAO;
-import com.loyal.persistence.dto.LevelDTO;
+import com.loyal.persistence.dao.LevelMasterDAO;
+import com.loyal.persistence.dto.LevelMasterDTO;
 import com.loyal.service.pojo.Level;
 
 public class LevelHelper {
 
 	@Autowired
-	public LevelDAO levelDAO;
+	public LevelMasterDAO levelDAO;
 	
-	public LevelDAO getLevelDAO() {
+	public LevelMasterDAO getLevelDAO() {
 		return levelDAO;
 	}
 
-	public void setLevelDAO(LevelDAO levelDAO) {
+	public void setLevelDAO(LevelMasterDAO levelDAO) {
 		this.levelDAO = levelDAO;
 	}
 
 	public Level retrieveLevelDetails(Integer levelID){
-		LevelDTO levelDTO = levelDAO.findById(levelID);
+		LevelMasterDTO levelDTO = levelDAO.findById(levelID);
 		
 		if(levelDTO != null){
 			return convertDTOToObject(levelDTO);
@@ -33,7 +33,7 @@ public class LevelHelper {
 	}
 	
 	public void createLevel(Level level){
-		LevelDTO levelDTO = null;
+		LevelMasterDTO levelDTO = null;
 		
 		if(level !=null){
 			levelDTO = convertObjToDTO(level);
@@ -44,27 +44,26 @@ public class LevelHelper {
 	public List<Level> retrieveAllLevels(){
 		List<Level> levelList = new ArrayList<Level>();
 		
-		for(LevelDTO levelDTO : levelDAO.findAll()){
+		for(LevelMasterDTO levelDTO : levelDAO.findAll()){
 			levelList.add(convertDTOToObject(levelDTO));
 		} 
 		return levelList;
 	}
 	
-	public Level convertDTOToObject(LevelDTO levelDTO){
+	public Level convertDTOToObject(LevelMasterDTO levelDTO){
 		Level level = new Level();
 		level.setLevelID(levelDTO.getId());
-		level.setLevelPoints(levelDTO.getPoints());
-		level.setDescriptionEn(levelDTO.getDescriptionEn());
-		level.setDescriptionSV(levelDTO.getDescriptionSv());
+		level.setLevelPoints(levelDTO.getLevelPoints());
+		level.setDescription(levelDTO.getDescription());
 		level.setImage(levelDTO.getImage());
 		return level;
 	}
 	
-	public LevelDTO convertObjToDTO(Level level){
-		LevelDTO levelDTO = new LevelDTO();
+	public LevelMasterDTO convertObjToDTO(Level level){
+		LevelMasterDTO levelDTO = new LevelMasterDTO();
 		levelDTO.setId(level.getLevelID());
-		levelDTO.setPoints(level.getLevelPoints());
-		levelDTO.setDescriptionEn(level.getDescriptionEn());
+		levelDTO.setLevelPoints(level.getLevelPoints());
+		levelDTO.setDescription(level.getDescription());
 		levelDTO.setImage(level.getImage());
 		return levelDTO;
 	}

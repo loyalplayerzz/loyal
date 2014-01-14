@@ -108,7 +108,7 @@ public class LevelMasterDAO extends BaseHibernateDAO {
 		return findByProperty(IMAGE, image);
 	}
 
-	public List findAll() {
+	public List<LevelMasterDTO> findAll() {
 		log.debug("finding all LevelMaster instances");
 		try {
 			String queryString = "from LevelMaster";

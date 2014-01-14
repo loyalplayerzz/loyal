@@ -12,14 +12,14 @@ public class AlgoTotalRoundsOnGame {
 		this.badgeId = totalRoundsOnGameId;
 	}
 
-	private String providerName;
+	private Integer providers;
 	
-	public String getProviderName() {
-		return providerName;
+	public Integer getProviders() {
+		return providers;
 	}
 
-	public void setProviderName(String providerName) {
-		this.providerName = providerName;
+	public void setProviders(Integer providers) {
+		this.providers = providers;
 	}
 
 	public Integer getNoOfRounds() {

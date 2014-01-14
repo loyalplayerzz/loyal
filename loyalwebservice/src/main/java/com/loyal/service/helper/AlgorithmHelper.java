@@ -7,10 +7,10 @@ import org.springframework.beans.factory.annotation.Autowired;
 
 import com.loyal.persistence.dao.AlgoTotalbetonproviderDAO;
 import com.loyal.persistence.dao.AlgoTotalroundsongameDAO;
-import com.loyal.persistence.dao.AlgorithmDAO;
+import com.loyal.persistence.dao.AlgorithmMasterDAO;
 import com.loyal.persistence.dto.AlgoTotalbetonproviderDTO;
 import com.loyal.persistence.dto.AlgoTotalroundsongameDTO;
-import com.loyal.persistence.dto.AlgorithmDTO;
+import com.loyal.persistence.dto.AlgorithmMasterDTO;
 import com.loyal.service.pojo.AlgoTotalRoundsOnGame;
 import com.loyal.service.pojo.AlgoTotalbetonprovider;
 import com.loyal.service.pojo.Algorithm;
@@ -18,7 +18,7 @@ import com.loyal.service.pojo.Algorithm;
 public class AlgorithmHelper {
 
 	@Autowired
-	public AlgorithmDAO algorithmDAO;
+	public AlgorithmMasterDAO algorithmMasterDAO;
 	
 	@Autowired
 	public AlgoTotalbetonproviderDAO algoTotalbetonproviderDAO;
@@ -44,16 +44,16 @@ public class AlgorithmHelper {
 		this.algoTotalbetonproviderDAO = algoTotalbetonproviderDAO;
 	}
 
-	public AlgorithmDAO getAlgorithmDAO() {
-		return algorithmDAO;
+	public AlgorithmMasterDAO getAlgorithmMasterDAO() {
+		return algorithmMasterDAO;
 	}
 
-	public void setAlgorithmDAO(AlgorithmDAO algorithmDAO) {
-		this.algorithmDAO = algorithmDAO;
+	public void setAlgorithmMasterDAO(AlgorithmMasterDAO AlgorithmMasterDAO) {
+		this.algorithmMasterDAO = AlgorithmMasterDAO;
 	}
 
 	public Algorithm retrieveAlgorithmDetails(Integer algorithmID){
-		AlgorithmDTO algorithmDTO = algorithmDAO.findById(algorithmID);
+		AlgorithmMasterDTO algorithmDTO = algorithmMasterDAO.findById(algorithmID);
 		return convertDTOToObject(algorithmDTO);
 		
 	}
@@ -73,13 +73,13 @@ public class AlgorithmHelper {
 	public List<Algorithm> retrieveAllAlgorithmDetails(){
 		List<Algorithm> algorithmList = new ArrayList<Algorithm>();
 		
-		for(AlgorithmDTO algoDTO : algorithmDAO.findAll()){
+		for(AlgorithmMasterDTO algoDTO : algorithmMasterDAO.findAll()){
 			algorithmList.add(convertDTOToObject(algoDTO));
 		} 
 		return algorithmList;
 	}
 	
-	public Algorithm convertDTOToObject(AlgorithmDTO algorithmDTO){
+	public Algorithm convertDTOToObject(AlgorithmMasterDTO algorithmDTO){
 		Algorithm algorithm = new Algorithm();
 		algorithm.setAlgorithmDescription(algorithmDTO.getDescription());
 		algorithm.setAlgorithmID(algorithmDTO.getId());
@@ -89,18 +89,18 @@ public class AlgorithmHelper {
 	
 	public AlgoTotalbetonproviderDTO convertObjToDTO(AlgoTotalbetonprovider algoTotalBetOnProvider){
 		AlgoTotalbetonproviderDTO algoTotalBetOnProviderDTO = new AlgoTotalbetonproviderDTO();
-		algoTotalBetOnProviderDTO.setBetAmt(algoTotalBetOnProvider.getBetAmt());
-		algoTotalBetOnProviderDTO.setNoOfDays(algoTotalBetOnProviderDTO.getNoOfDays());
-		algoTotalBetOnProviderDTO.setProviderId(algoTotalBetOnProviderDTO.getProviderId());
+		algoTotalBetOnProviderDTO.setBetAmount(algoTotalBetOnProvider.getBetAmt());
+		algoTotalBetOnProviderDTO.setNoOfDays(algoTotalBetOnProvider.getNoOfDays());
+		algoTotalBetOnProviderDTO.setProviders(algoTotalBetOnProviderDTO.getProviders());
 		algoTotalBetOnProviderDTO.setId(algoTotalBetOnProviderDTO.getId());
 		return algoTotalBetOnProviderDTO;
 	}
 	
 	public AlgoTotalroundsongameDTO convertObjToDTO(AlgoTotalRoundsOnGame algoTotalRoundOnGame){
 		AlgoTotalroundsongameDTO algoTotalRoundOnGameDTO = new AlgoTotalroundsongameDTO();
-		algoTotalRoundOnGameDTO.setBadgeId(algoTotalRoundOnGame.getTotalRoundsOnGameId());
-		algoTotalRoundOnGameDTO.setNameOfGames(algoTotalRoundOnGame.getNameOfGame());
-		algoTotalRoundOnGameDTO.setNoOfRounds(algoTotalRoundOnGame.getNoOfRounds());
+		//algoTotalRoundOnGameDTO.setBadgeId(algoTotalRoundOnGame.getTotalRoundsOnGameId());
+		algoTotalRoundOnGameDTO.setNoOfGameRounds(algoTotalRoundOnGame.getNoOfRounds());
+		algoTotalRoundOnGameDTO.setProviders(algoTotalRoundOnGame.getProviders());
 	
 		return algoTotalRoundOnGameDTO;
 	}

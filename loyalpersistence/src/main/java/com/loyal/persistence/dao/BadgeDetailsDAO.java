@@ -117,7 +117,7 @@ public class BadgeDetailsDAO extends BaseHibernateDAO {
 		return findByProperty(ACTIVE, active);
 	}
 
-	public List findAll() {
+	public List<BadgeDetailsDTO> findAll() {
 		log.debug("finding all BadgeDetails instances");
 		try {
 			String queryString = "from BadgeDetails";

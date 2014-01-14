@@ -6,7 +6,7 @@ public class AlgoTotalbetonprovider {
 	
 	private String providerId;
 	
-	private Integer betAmt;
+	private Double betAmt;
 	
 	private Integer noOfDays;
 
@@ -26,11 +26,11 @@ public class AlgoTotalbetonprovider {
 		this.providerId = providerId;
 	}
 
-	public Integer getBetAmt() {
+	public Double getBetAmt() {
 		return betAmt;
 	}
 
-	public void setBetAmt(Integer betAmt) {
+	public void setBetAmt(Double betAmt) {
 		this.betAmt = betAmt;
 	}
 

@@ -5,25 +5,25 @@ import java.util.List;
 
 import org.springframework.beans.factory.annotation.Autowired;
 
-import com.loyal.persistence.dao.LoyalpointsDAO;
-import com.loyal.persistence.dto.LoyalpointsDTO;
+import com.loyal.persistence.dao.LoyalpointsMasterDAO;
+import com.loyal.persistence.dto.LoyalpointsMasterDTO;
 import com.loyal.service.pojo.LoyalPoints;
 
 public class LoyalPointsHelper {
 
 	@Autowired
-	public LoyalpointsDAO loyalPointsDAO;
+	public LoyalpointsMasterDAO loyalPointsDAO;
 	
-	public LoyalpointsDAO getLoyalPointsDAO() {
+	public LoyalpointsMasterDAO getLoyalPointsDAO() {
 		return loyalPointsDAO;
 	}
 
-	public void setLoyalPointsDAO(LoyalpointsDAO loyalPointsDAO) {
+	public void setLoyalPointsDAO(LoyalpointsMasterDAO loyalPointsDAO) {
 		this.loyalPointsDAO = loyalPointsDAO;
 	}
 
 	public LoyalPoints retrieveLoyalPoint(Integer id){
-		LoyalpointsDTO loyalPointsDTO = loyalPointsDAO.findById(id);
+		LoyalpointsMasterDTO loyalPointsDTO = loyalPointsDAO.findById(id);
 		
 		if(loyalPointsDTO != null){
 			return convertDTOToObject(loyalPointsDTO);
@@ -33,7 +33,7 @@ public class LoyalPointsHelper {
 	}
 	
 	public void createLoyalPoints(LoyalPoints loyalPoints){
-		LoyalpointsDTO loyalPointsDTO = null;
+		LoyalpointsMasterDTO loyalPointsDTO = null;
 		
 		if(loyalPoints !=null){
 			loyalPointsDTO = convertObjToDTO(loyalPoints);
@@ -44,13 +44,13 @@ public class LoyalPointsHelper {
 	public List<LoyalPoints> retrieveAllLoyalPoints(){
 		List<LoyalPoints> loyalPointsList = new ArrayList<LoyalPoints>();
 		
-		for(LoyalpointsDTO loyalPointsDTO : loyalPointsDAO.findAll()){
+		for(LoyalpointsMasterDTO loyalPointsDTO : loyalPointsDAO.findAll()){
 			loyalPointsList.add(convertDTOToObject(loyalPointsDTO));
 		} 
 		return loyalPointsList;
 	}
 	
-	public LoyalPoints convertDTOToObject(LoyalpointsDTO loyalpointsDTO){
+	public LoyalPoints convertDTOToObject(LoyalpointsMasterDTO loyalpointsDTO){
 		LoyalPoints loyalPoints = new LoyalPoints();
 		loyalPoints.setBet(loyalpointsDTO.getBet());
 		loyalPoints.setCurrencyType(loyalpointsDTO.getCurrency());
@@ -59,8 +59,8 @@ public class LoyalPointsHelper {
 		return loyalPoints;
 	}
 	
-	public LoyalpointsDTO convertObjToDTO(LoyalPoints loyalPoints){
-		LoyalpointsDTO loyalpointsDTO = new LoyalpointsDTO();
+	public LoyalpointsMasterDTO convertObjToDTO(LoyalPoints loyalPoints){
+		LoyalpointsMasterDTO loyalpointsDTO = new LoyalpointsMasterDTO();
 		loyalpointsDTO.setBet(loyalPoints.getBet());
 		loyalpointsDTO.setPoints(loyalPoints.getLoyalPoints());
 		loyalpointsDTO.setCurrency(loyalPoints.getCurrencyType());

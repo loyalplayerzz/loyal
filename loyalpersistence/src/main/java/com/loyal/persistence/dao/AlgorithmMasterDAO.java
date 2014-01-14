@@ -102,7 +102,7 @@ public class AlgorithmMasterDAO extends BaseHibernateDAO {
 		return findByProperty(DESCRIPTION, description);
 	}
 
-	public List findAll() {
+	public List<AlgorithmMasterDTO> findAll() {
 		log.debug("finding all AlgorithmMaster instances");
 		try {
 			String queryString = "from AlgorithmMaster";

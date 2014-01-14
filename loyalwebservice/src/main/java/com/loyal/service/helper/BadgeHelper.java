@@ -7,10 +7,10 @@ import java.util.List;
 import org.springframework.beans.factory.annotation.Autowired;
 
 import com.loyal.persistence.dao.BadgeDetailsDAO;
-import com.loyal.persistence.dao.BadgeLoyalgiftDAO;
+import com.loyal.persistence.dao.BadgeLoyalGiftDAO;
 import com.loyal.persistence.dao.LoyalGiftsDAO;
 import com.loyal.persistence.dto.BadgeDetailsDTO;
-import com.loyal.persistence.dto.BadgeLoyalgiftDTO;
+import com.loyal.persistence.dto.BadgeLoyalGiftDTO;
 import com.loyal.persistence.dto.LoyalGiftsDTO;
 import com.loyal.service.pojo.Badge;
 
@@ -28,13 +28,13 @@ public class BadgeHelper {
 	}
 
 	@Autowired
-	public BadgeLoyalgiftDAO badgeLoyalGiftDAO;
+	public BadgeLoyalGiftDAO badgeLoyalGiftDAO;
 	
-	public BadgeLoyalgiftDAO getBadgeLoyalGiftDAO() {
+	public BadgeLoyalGiftDAO getBadgeLoyalGiftDAO() {
 		return badgeLoyalGiftDAO;
 	}
 
-	public void setBadgeLoyalGiftDAO(BadgeLoyalgiftDAO badgeLoyalGiftDAO) {
+	public void setBadgeLoyalGiftDAO(BadgeLoyalGiftDAO badgeLoyalGiftDAO) {
 		this.badgeLoyalGiftDAO = badgeLoyalGiftDAO;
 	}
 	
@@ -53,7 +53,7 @@ public class BadgeHelper {
 		List<BadgeDetailsDTO> badgeDetailsDTOList = badgeDetailDAO.findByBadgeName(badgeName);
 		
 		if(badgeDetailsDTOList != null && badgeDetailsDTOList.size() > 0){
-			BadgeLoyalgiftDTO badgeGiftDTO = (BadgeLoyalgiftDTO) badgeLoyalGiftDAO.findByBadgeId(badgeDetailsDTOList.get(0).getId());
+			BadgeLoyalGiftDTO badgeGiftDTO = (BadgeLoyalGiftDTO) badgeLoyalGiftDAO.findByBadgeId(badgeDetailsDTOList.get(0).getBadgeId());
 			return convertDTOToObject(badgeDetailsDTOList.get(0), badgeGiftDTO);
 		} else {
 			return null;
@@ -64,7 +64,7 @@ public class BadgeHelper {
 		BadgeDetailsDTO badgeDetailsDTO = null;
 		
 		if(badge !=null){
-			HashMap<BadgeDetailsDTO, BadgeLoyalgiftDTO> badgeMap = convertObjToDTO(badge);
+			HashMap<BadgeDetailsDTO, BadgeLoyalGiftDTO> badgeMap = convertObjToDTO(badge);
 			
 			for(BadgeDetailsDTO badgeDTO : badgeMap.keySet()){
 				badgeDetailDAO.save(badgeDetailsDTO);
@@ -78,36 +78,36 @@ public class BadgeHelper {
 		List<Badge> badgeDetailList = new ArrayList<Badge>();
 		
 		for(BadgeDetailsDTO badgeDetailDTO : badgeDetailDAO.findAll()){
-			BadgeLoyalgiftDTO badgeGiftDTO = (BadgeLoyalgiftDTO) badgeLoyalGiftDAO.findByBadgeId(badgeDetailDTO.getId());
+			BadgeLoyalGiftDTO badgeGiftDTO = (BadgeLoyalGiftDTO) badgeLoyalGiftDAO.findByBadgeId(badgeDetailDTO.getBadgeId());
 			badgeDetailList.add(convertDTOToObject(badgeDetailDTO, badgeGiftDTO));
 		} 
 		return badgeDetailList;
 	}
 	
-	public Badge convertDTOToObject(BadgeDetailsDTO badgeDetailsDTO, BadgeLoyalgiftDTO badgeGiftDTO){
+	public Badge convertDTOToObject(BadgeDetailsDTO badgeDetailsDTO, BadgeLoyalGiftDTO badgeGiftDTO){
 		Badge badge = new Badge();
 		badge.setBadgeName(badgeDetailsDTO.getBadgeName());
 		badge.setBadgeDescription(badgeDetailsDTO.getBadgeDescription());
-		badge.setAlgorithmID(badgeDetailsDTO.getAlgoId());
+		badge.setAlgorithmID(Integer.valueOf(badgeDetailsDTO.getAlgoId()));
 		badge.setGift(badgeGiftDTO.getLoyalGiftId());
-		badge.setImage(badgeDetailsDTO.getImage());
+		//badge.setImage(badgeDetailsDTO.getImage());
 		return badge;
 	}
 	
-	public HashMap<BadgeDetailsDTO, BadgeLoyalgiftDTO> convertObjToDTO(Badge badge){
+	public HashMap<BadgeDetailsDTO, BadgeLoyalGiftDTO> convertObjToDTO(Badge badge){
 		BadgeDetailsDTO badgeDetailsDTO = new BadgeDetailsDTO();
 		badgeDetailsDTO.setBadgeName(badge.getBadgeName());
 		badgeDetailsDTO.setBadgeDescription(badge.getBadgeDescription());
-		badgeDetailsDTO.setAlgoId(badge.getAlgorithmID());
+		badgeDetailsDTO.setAlgoId(String.valueOf(badge.getAlgorithmID()));
 		
 		LoyalGiftsDTO giftsDTO = loyalGiftsDAO.findById(badge.getGift());
 		
-		BadgeLoyalgiftDTO badgeGiftDTO = new BadgeLoyalgiftDTO();
-		badgeGiftDTO.setBadgeId(badgeDetailsDTO.getId());
+		BadgeLoyalGiftDTO badgeGiftDTO = new BadgeLoyalGiftDTO();
+		badgeGiftDTO.setBadgeId(badgeDetailsDTO.getBadgeId());
 		badgeGiftDTO.setLoyalGiftId(giftsDTO.getId());
-		badgeDetailsDTO.setImage(badge.getImage());
+		//badgeDetailsDTO.setImage(badge.getImage());
 		
-		HashMap<BadgeDetailsDTO, BadgeLoyalgiftDTO> badgeMap = new HashMap<BadgeDetailsDTO, BadgeLoyalgiftDTO>();
+		HashMap<BadgeDetailsDTO, BadgeLoyalGiftDTO> badgeMap = new HashMap<BadgeDetailsDTO, BadgeLoyalGiftDTO>();
 		badgeMap.put(badgeDetailsDTO, badgeGiftDTO);
 		return badgeMap;
 	}

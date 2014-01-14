@@ -108,7 +108,7 @@ public class LoyalpointsMasterDAO extends BaseHibernateDAO {
 		return findByProperty(POINTS, points);
 	}
 
-	public List findAll() {
+	public List<LoyalpointsMasterDTO> findAll() {
 		log.debug("finding all LoyalpointsMaster instances");
 		try {
 			String queryString = "from LoyalpointsMaster";

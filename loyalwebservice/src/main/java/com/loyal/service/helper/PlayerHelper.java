@@ -8,27 +8,27 @@ import java.util.List;
 
 import org.springframework.beans.factory.annotation.Autowired;
 
-import com.loyal.persistence.dao.LevelDAO;
+import com.loyal.persistence.dao.LevelMasterDAO;
 import com.loyal.persistence.dao.PlayersBadgeDAO;
-import com.loyal.persistence.dao.PlayersDAO;
 import com.loyal.persistence.dao.PlayersLevelDAO;
 import com.loyal.persistence.dao.PlayersLoyalpointsDAO;
+import com.loyal.persistence.dao.PlayersMasterDAO;
 import com.loyal.persistence.dto.PlayersBadgeDTO;
-import com.loyal.persistence.dto.PlayersDTO;
 import com.loyal.persistence.dto.PlayersLevelDTO;
 import com.loyal.persistence.dto.PlayersLoyalpointsDTO;
+import com.loyal.persistence.dto.PlayersMasterDTO;
 import com.loyal.service.pojo.Player;
 
 public class PlayerHelper {
 
 	@Autowired
-	public PlayersDAO playersDAO;
+	public PlayersMasterDAO playersDAO;
 
 	@Autowired
 	public PlayersLevelDAO playersLevelDAO;
 	
 	@Autowired
-	public LevelDAO levelDAO;
+	public LevelMasterDAO levelDAO;
 	
 	@Autowired
 	public PlayersBadgeDAO playersBadgeDAO;
@@ -41,22 +41,22 @@ public class PlayerHelper {
 		this.playersBadgeDAO = playersBadgeDAO;
 	}
 
-	public LevelDAO getLevelDAO() {
+	public LevelMasterDAO getLevelDAO() {
 		return levelDAO;
 	}
 
-	public void setLevelDAO(LevelDAO levelDAO) {
+	public void setLevelDAO(LevelMasterDAO levelDAO) {
 		this.levelDAO = levelDAO;
 	}
 
 	@Autowired
 	public PlayersLoyalpointsDAO playersLoyalPointsDAO;
 
-	public PlayersDAO getPlayersDAO() {
+	public PlayersMasterDAO getPlayersDAO() {
 		return playersDAO;
 	}
 
-	public void setPlayersDAO(PlayersDAO playersDAO) {
+	public void setPlayersDAO(PlayersMasterDAO playersDAO) {
 		this.playersDAO = playersDAO;
 	}
 
@@ -79,7 +79,7 @@ public class PlayerHelper {
 
 	public Player getPlayerDetails(String userID){
 		Player player = new Player();
-		List<PlayersDTO> playersDTOList = playersDAO.findByExternalUserId(userID);
+		List<PlayersMasterDTO> playersDTOList = playersDAO.findByExternalUserId(userID);
 		if(playersDTOList !=null && !playersDTOList.isEmpty()){
 			//Player UserID
 			player.setUserID(userID);
