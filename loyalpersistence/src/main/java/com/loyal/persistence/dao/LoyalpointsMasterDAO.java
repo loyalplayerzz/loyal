@@ -6,6 +6,7 @@ import java.util.List;
 
 import org.hibernate.LockMode;
 import org.hibernate.Query;
+import org.hibernate.criterion.Restrictions;
 import org.slf4j.Logger;
 import org.slf4j.LoggerFactory;
 
@@ -119,6 +120,16 @@ public class LoyalpointsMasterDAO extends BaseHibernateDAO {
 			throw re;
 		}
 	}
+	
+	 public Integer getPointIDBasedOnBet(Double bet){
+         List<LoyalpointsMasterDTO> loyalPointsList= getSession().createCriteria(LoyalpointsMasterDTO.class).add(Restrictions.gt("bet", bet)).list();
+         if(loyalPointsList == null || loyalPointsList.isEmpty()){
+                 return 1;
+         } else {
+                 return loyalPointsList.get(0).getId() - 1;
+         }
+ }
+
 
 	public LoyalpointsMasterDTO merge(LoyalpointsMasterDTO detachedInstance) {
 		log.debug("merging LoyalpointsMaster instance");
