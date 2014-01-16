@@ -230,7 +230,7 @@ alter table `loyal`.`players_level`
       ON DELETE RESTRICT
     ;
 
-alter table `loyal`.`players_badge`
+alter table `loyal`.`player_badge_details`
         add constraint FK_players_badge_badge
       FOREIGN KEY (badge_id) REFERENCES badge_details(id)
       ON UPDATE CASCADE 
