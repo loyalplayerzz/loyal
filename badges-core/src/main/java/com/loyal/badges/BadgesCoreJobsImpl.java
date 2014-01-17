@@ -13,7 +13,7 @@ public class BadgesCoreJobsImpl implements BadgesCoreJobsApi {
     public void insertMasterData() {
         MasterDataHandler masterDataHandler = new MasterDataHandler();
         if(masterDataHandler.isThisJobActive()){
-            masterDataHandler.insertGameRoundMasterData();
+            masterDataHandler.insertGameRoundMasterData(null);
         }
     }
 

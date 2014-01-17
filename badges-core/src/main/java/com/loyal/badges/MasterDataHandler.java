@@ -32,7 +32,7 @@ public class MasterDataHandler {
     
     private static final Logger LOG = LoggerFactory.getLogger(MasterDataHandler.class);
     
-    public void insertGameRoundMasterData(){
+    public void insertGameRoundMasterData(ArrayList<InsertGameRoundMasterObj> insertDataList){
         String sql = "insert into game_round_master (game_round_id, gameId, game_provider, transaction_type,player_id,casino_currency_bet,casino_currency_win,game_round_start_date,game_round_end_date)"
                 + " VALUES (?,?,?,?,?,?,?,?,?);";
         Connection conn = DbUtility.getConnection();
