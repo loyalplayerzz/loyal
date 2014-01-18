@@ -42,8 +42,9 @@ public class MasterDataHandler {
             LOG.info("Just before the setting up the test Data");
             setupTestData();
             LOG.info("After setting up the test Data");
-            ArrayList<InsertGameRoundMasterObj> insertDataList = (ArrayList<InsertGameRoundMasterObj>) getDataListToInsert();
-            
+            if(insertDataList == null || insertDataList.isEmpty() || insertDataList.size() == 0){
+                insertDataList = (ArrayList<InsertGameRoundMasterObj>) getDataListToInsert();
+            }
             for(InsertGameRoundMasterObj obj : insertDataList){
                 java.sql.Timestamp sql_startDate = new java.sql.Timestamp(obj.getGameRoundStartDate().getTime());
                 java.sql.Timestamp sql_endDate = new java.sql.Timestamp(obj.getGameRoundEndDate().getTime());
@@ -72,7 +73,7 @@ public class MasterDataHandler {
             }
         }
     }
-    
+ 
     private static List<InsertGameRoundMasterObj> getDataListToInsert() {
         List<InsertGameRoundMasterObj> insertDataList = new ArrayList<InsertGameRoundMasterObj>();
         List<String> gameKeys = new ArrayList<String>(providerGame.keySet());
