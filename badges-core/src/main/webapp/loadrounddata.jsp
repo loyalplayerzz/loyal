@@ -104,37 +104,30 @@ String message = (String)session.getAttribute("MESSAGE");
 session.removeAttribute("MESSAGE");
 %>
 <table border="1" width="80%">
-<tr>
-<td colspan="5">
+<tr><td colspan="5">
 Please write the path of the file lie c:\\temp\master.csv
 </td></tr>
 <form id="filePathForm" name="filePathForm" method="post">
 <input type="hidden" name="action" id="action"/>
-<tr>
-<td colspan="5">
+<tr><td colspan="5">
 <input type="text" name="fileName" id="fileName" size="60"/>&nbsp;&nbsp;&nbsp;<input type="submit" name="filePath" id="filePath" value="UPLOAD" onclick="readFileFromPath(this.form)"/>
-</td></tr>
-
-<tr>
-<td colspan="5">
-<input type="submit" name="executejobs" id="executejobs" value="EXECUTE JOBS" onclick="executeBadgeJobs(this.form)"/>
 </td></tr>
 </form>
 <form id="uploadForm" name="uploadForm" enctype="multipart/form-data">
 <input type="hidden" name="action" id="action"/>
-<tr>
-<td colspan="5">
+<tr><td colspan="5">
 <input type="file" id="browse" name="fileupload"/>&nbsp;&nbsp;&nbsp;<input type="submit" name="fileUpload" id="fileUpload" value="UPLOAD" onclick="uploadCsvFile()"/>
 </td>
 </tr>
+<tr><td colspan="5">
+<input type="submit" name="executejobs" id="executejobs" value="EXECUTE JOBS" onclick="executeBadgeJobs(this.form)"/>
+</td></tr>
 </form>
 <form id="deleteData" name="deleteData" method="post">
 <input type="hidden" name="action" id="action"/>
-<tr>
-<td colspan="5">
+<tr><td colspan="5">
 Please select the tables to delete
 </td></tr>
-</tr>
 <tr><td colspan="5">
 GAME ROUND MASTER TABLE: &nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;<input type="checkbox" name="dataTables" value="GAME_ROUND_MASTER">
 </td></tr>
