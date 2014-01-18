@@ -99,7 +99,7 @@ public class MasterDataHandler {
         }
         return insertDataList;
     }
-    private static int getLastGameRoundId() {
+    public static int getLastGameRoundId() {
         String sql = "select MAX(game_round_id) roundId from game_round_master";
         int gameRoundId = 0;
         try{
