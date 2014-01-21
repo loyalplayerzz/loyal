@@ -55,11 +55,11 @@
 	</bean>
 
 	<bean id="levelHelper" class="com.loyal.service.helper.LevelHelper">
-		<property name="levelDAO" ref="levelDAO" />
+		<property name="levelMasterDAO" ref="levelMasterDAO" />
 	</bean>
 	
 	<bean id="algorithmHelper" class="com.loyal.service.helper.AlgorithmHelper">
-		<property name="algorithmDAO" ref="algorithmDAO" />
+		<property name="algorithmDAO" ref="algorithmMasterDAO" />
 		<property name="algoTotalbetonproviderDAO" ref="algoTotalbetonproviderDAO" />
 		<property name="algoTotalRoundsOnGameDAO" ref="algoTotalRoundsOnGameDAO" />
 	</bean>
@@ -70,7 +70,7 @@
 	</bean>
 
 	<bean id="loyalPointsHelper" class="com.loyal.service.helper.LoyalPointsHelper">
-		<property name="loyalPointsDAO" ref="loyalPointsDAO" />
+		<property name="loyalPointsDAO" ref="loyalPointsMasterDAO" />
 	</bean>
 
 	<bean id="loyalGiftsHelper" class="com.loyal.service.helper.LoyalGiftsHelper">
@@ -81,7 +81,7 @@
 		<property name="sessionFactory" ref="sessionFactory"></property>
 	</bean>
 	
-	<bean id="badgeLoyalGiftDAO" class="com.loyal.persistence.dao.BadgeLoyalgiftDAO">
+	<bean id="badgeLoyalGiftDAO" class="com.loyal.persistence.dao.BadgeLoyalGiftDAO">
 		<property name="sessionFactory" ref="sessionFactory"></property>
 	</bean>
 
@@ -89,7 +89,7 @@
 		<property name="sessionFactory" ref="sessionFactory"></property>
 	</bean>
 	
-	<bean id="algorithmDAO" class="com.loyal.persistence.dao.AlgorithmDAO">
+	<bean id="algorithmMasterDAO" class="com.loyal.persistence.dao.AlgorithmMasterDAO">
 		<property name="sessionFactory" ref="sessionFactory"></property>
 	</bean>
 	<bean id="algoTotalbetonproviderDAO" class="com.loyal.persistence.dao.AlgoTotalbetonproviderDAO">
@@ -99,10 +99,10 @@
 		<property name="sessionFactory" ref="sessionFactory"></property>
 	</bean>
 
-	<bean id="levelDAO" class="com.loyal.persistence.dao.LevelDAO">
+	<bean id="levelMasterDAO" class="com.loyal.persistence.dao.LevelMasterDAO">
 		<property name="sessionFactory" ref="sessionFactory"></property>
 	</bean>
-	<bean id="loyalPointsDAO" class="com.loyal.persistence.dao.LoyalpointsDAO">
+	<bean id="loyalPointsMasterDAO" class="com.loyal.persistence.dao.LoyalpointsMasterDAO">
 		<property name="sessionFactory" ref="sessionFactory"></property>
 	</bean>
 </beans>

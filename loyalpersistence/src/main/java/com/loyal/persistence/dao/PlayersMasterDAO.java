@@ -6,10 +6,11 @@ import java.util.List;
 
 import org.hibernate.LockMode;
 import org.hibernate.Query;
+import org.hibernate.Session;
+import org.hibernate.SessionFactory;
 import org.slf4j.Logger;
 import org.slf4j.LoggerFactory;
 
-import com.loyal.persistence.BaseHibernateDAO;
 import com.loyal.persistence.dto.PlayersMasterDTO;
 
 
@@ -24,7 +25,7 @@ import com.loyal.persistence.dto.PlayersMasterDTO;
  * @see com.PlayersMasterDTO.hibernate.PlayersMaster
  * @author MyEclipse Persistence Tools
  */
-public class PlayersMasterDAO extends BaseHibernateDAO {
+public class PlayersMasterDAO {
 	private static final Logger log = LoggerFactory
 			.getLogger(PlayersMasterDAO.class);
 	// property constants
@@ -36,6 +37,21 @@ public class PlayersMasterDAO extends BaseHibernateDAO {
 	public static final String SEX = "sex";
 	public static final String COUNTRY = "country";
 
+	 private SessionFactory sessionFactory;
+
+     public SessionFactory getSessionFactory() {
+             return sessionFactory;
+     }
+
+     public void setSessionFactory(SessionFactory sessionFactory) {
+             this.sessionFactory = sessionFactory;
+     }
+
+     private Session getSession() {
+             return sessionFactory.getCurrentSession();
+     }
+
+	
 	public void save(PlayersMasterDTO transientInstance) {
 		log.debug("saving PlayersMaster instance");
 		try {

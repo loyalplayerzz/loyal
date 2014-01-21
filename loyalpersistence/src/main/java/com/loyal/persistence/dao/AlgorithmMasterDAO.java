@@ -6,10 +6,11 @@ import java.util.List;
 
 import org.hibernate.LockMode;
 import org.hibernate.Query;
+import org.hibernate.Session;
+import org.hibernate.SessionFactory;
 import org.slf4j.Logger;
 import org.slf4j.LoggerFactory;
 
-import com.loyal.persistence.BaseHibernateDAO;
 import com.loyal.persistence.dto.AlgorithmMasterDTO;
 
 /**
@@ -23,13 +24,28 @@ import com.loyal.persistence.dto.AlgorithmMasterDTO;
  * @see com.AlgorithmMasterDTO.hibernate.AlgorithmMaster
  * @author MyEclipse Persistence Tools
  */
-public class AlgorithmMasterDAO extends BaseHibernateDAO {
+public class AlgorithmMasterDAO {
 	private static final Logger log = LoggerFactory
 			.getLogger(AlgorithmMasterDAO.class);
 	// property constants
 	public static final String PARAM_TABLE = "paramTable";
 	public static final String DESCRIPTION = "description";
 
+	 private SessionFactory sessionFactory;
+
+     public SessionFactory getSessionFactory() {
+             return sessionFactory;
+     }
+
+     public void setSessionFactory(SessionFactory sessionFactory) {
+             this.sessionFactory = sessionFactory;
+     }
+
+     private Session getSession() {
+             return sessionFactory.getCurrentSession();
+     }
+
+	
 	public void save(AlgorithmMasterDTO transientInstance) {
 		log.debug("saving AlgorithmMaster instance");
 		try {

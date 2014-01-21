@@ -6,10 +6,11 @@ import java.util.List;
 
 import org.hibernate.LockMode;
 import org.hibernate.Query;
+import org.hibernate.Session;
+import org.hibernate.SessionFactory;
 import org.slf4j.Logger;
 import org.slf4j.LoggerFactory;
 
-import com.loyal.persistence.BaseHibernateDAO;
 import com.loyal.persistence.dto.GameRoundSummaryDTO;
 
 /**
@@ -23,7 +24,7 @@ import com.loyal.persistence.dto.GameRoundSummaryDTO;
  * @see com.GameRoundSummaryDTO.hibernate.GameRoundSummary
  * @author MyEclipse Persistence Tools
  */
-public class GameRoundSummaryDAO extends BaseHibernateDAO {
+public class GameRoundSummaryDAO {
 	private static final Logger log = LoggerFactory
 			.getLogger(GameRoundSummaryDAO.class);
 	// property constants
@@ -34,6 +35,21 @@ public class GameRoundSummaryDAO extends BaseHibernateDAO {
 	public static final String TOTAL_BET = "totalBet";
 	public static final String TOTAL_WIN = "totalWin";
 
+	 private SessionFactory sessionFactory;
+
+     public SessionFactory getSessionFactory() {
+             return sessionFactory;
+     }
+
+     public void setSessionFactory(SessionFactory sessionFactory) {
+             this.sessionFactory = sessionFactory;
+     }
+
+     private Session getSession() {
+             return sessionFactory.getCurrentSession();
+     }
+
+	
 	public void save(GameRoundSummaryDTO transientInstance) {
 		log.debug("saving GameRoundSummary instance");
 		try {

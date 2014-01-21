@@ -6,10 +6,11 @@ import java.util.List;
 
 import org.hibernate.LockMode;
 import org.hibernate.Query;
+import org.hibernate.Session;
+import org.hibernate.SessionFactory;
 import org.slf4j.Logger;
 import org.slf4j.LoggerFactory;
 
-import com.loyal.persistence.BaseHibernateDAO;
 import com.loyal.persistence.dto.AlgoGamesDTO;
 
 /**
@@ -23,7 +24,7 @@ import com.loyal.persistence.dto.AlgoGamesDTO;
  * @see com.AlgoGamesDTO.hibernate.AlgoGames
  * @author MyEclipse Persistence Tools
  */
-public class AlgoGamesDAO extends BaseHibernateDAO {
+public class AlgoGamesDAO {
 	private static final Logger log = LoggerFactory
 			.getLogger(AlgoGamesDAO.class);
 	// property constants
@@ -31,6 +32,21 @@ public class AlgoGamesDAO extends BaseHibernateDAO {
 	public static final String ALGO_TYPE = "algoType";
 	public static final String GAME = "game";
 	public static final String ACTIVE = "active";
+	
+	 private SessionFactory sessionFactory;
+
+     public SessionFactory getSessionFactory() {
+             return sessionFactory;
+     }
+
+     public void setSessionFactory(SessionFactory sessionFactory) {
+             this.sessionFactory = sessionFactory;
+     }
+
+     private Session getSession() {
+             return sessionFactory.getCurrentSession();
+     }
+
 
 	public void save(AlgoGamesDTO transientInstance) {
 		log.debug("saving AlgoGames instance");

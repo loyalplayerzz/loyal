@@ -6,10 +6,11 @@ import java.util.List;
 
 import org.hibernate.LockMode;
 import org.hibernate.Query;
+import org.hibernate.Session;
+import org.hibernate.SessionFactory;
 import org.slf4j.Logger;
 import org.slf4j.LoggerFactory;
 
-import com.loyal.persistence.BaseHibernateDAO;
 import com.loyal.persistence.dto.GameRoundMasterDTO;
 
 /**
@@ -23,7 +24,7 @@ import com.loyal.persistence.dto.GameRoundMasterDTO;
  * @see com.GameRoundMasterDTO.hibernate.GameRoundMaster
  * @author MyEclipse Persistence Tools
  */
-public class GameRoundMasterDAO extends BaseHibernateDAO {
+public class GameRoundMasterDAO {
 	private static final Logger log = LoggerFactory
 			.getLogger(GameRoundMasterDAO.class);
 	// property constants
@@ -36,6 +37,21 @@ public class GameRoundMasterDAO extends BaseHibernateDAO {
 	public static final String ANALYZED_BADGES = "analyzedBadges";
 	public static final String GAME_PROVIDER = "gameProvider";
 
+	 private SessionFactory sessionFactory;
+
+     public SessionFactory getSessionFactory() {
+             return sessionFactory;
+     }
+
+     public void setSessionFactory(SessionFactory sessionFactory) {
+             this.sessionFactory = sessionFactory;
+     }
+
+     private Session getSession() {
+             return sessionFactory.getCurrentSession();
+     }
+
+	
 	public void save(GameRoundMasterDTO transientInstance) {
 		log.debug("saving GameRoundMaster instance");
 		try {

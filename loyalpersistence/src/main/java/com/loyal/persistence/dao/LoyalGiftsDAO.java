@@ -6,10 +6,11 @@ import java.util.List;
 
 import org.hibernate.LockMode;
 import org.hibernate.Query;
+import org.hibernate.Session;
+import org.hibernate.SessionFactory;
 import org.slf4j.Logger;
 import org.slf4j.LoggerFactory;
 
-import com.loyal.persistence.BaseHibernateDAO;
 import com.loyal.persistence.dto.LoyalGiftsDTO;
 
 
@@ -24,7 +25,7 @@ import com.loyal.persistence.dto.LoyalGiftsDTO;
  * @see com.LoyalGiftsDTO.hibernate.LoyalGifts
  * @author MyEclipse Persistence Tools
  */
-public class LoyalGiftsDAO extends BaseHibernateDAO {
+public class LoyalGiftsDAO {
 	private static final Logger log = LoggerFactory
 			.getLogger(LoyalGiftsDAO.class);
 	// property constants
@@ -33,6 +34,21 @@ public class LoyalGiftsDAO extends BaseHibernateDAO {
 	public static final String DESCRIPTION = "description";
 	public static final String POINTS = "points";
 	public static final String IMAGE = "image";
+	
+	 private SessionFactory sessionFactory;
+
+     public SessionFactory getSessionFactory() {
+             return sessionFactory;
+     }
+
+     public void setSessionFactory(SessionFactory sessionFactory) {
+             this.sessionFactory = sessionFactory;
+     }
+
+     private Session getSession() {
+             return sessionFactory.getCurrentSession();
+     }
+
 
 	public void save(LoyalGiftsDTO transientInstance) {
 		log.debug("saving LoyalGifts instance");

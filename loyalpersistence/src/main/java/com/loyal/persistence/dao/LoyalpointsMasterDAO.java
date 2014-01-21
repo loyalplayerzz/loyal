@@ -6,11 +6,12 @@ import java.util.List;
 
 import org.hibernate.LockMode;
 import org.hibernate.Query;
+import org.hibernate.Session;
+import org.hibernate.SessionFactory;
 import org.hibernate.criterion.Restrictions;
 import org.slf4j.Logger;
 import org.slf4j.LoggerFactory;
 
-import com.loyal.persistence.BaseHibernateDAO;
 import com.loyal.persistence.dto.LoyalpointsMasterDTO;
 
 
@@ -25,13 +26,28 @@ import com.loyal.persistence.dto.LoyalpointsMasterDTO;
  * @see com.LoyalpointsMasterDTO.hibernate.LoyalpointsMaster
  * @author MyEclipse Persistence Tools
  */
-public class LoyalpointsMasterDAO extends BaseHibernateDAO {
+public class LoyalpointsMasterDAO {
 	private static final Logger log = LoggerFactory
 			.getLogger(LoyalpointsMasterDAO.class);
 	// property constants
 	public static final String BET = "bet";
 	public static final String CURRENCY = "currency";
 	public static final String POINTS = "points";
+	
+	 private SessionFactory sessionFactory;
+
+     public SessionFactory getSessionFactory() {
+             return sessionFactory;
+     }
+
+     public void setSessionFactory(SessionFactory sessionFactory) {
+             this.sessionFactory = sessionFactory;
+     }
+
+     private Session getSession() {
+             return sessionFactory.getCurrentSession();
+     }
+
 
 	public void save(LoyalpointsMasterDTO transientInstance) {
 		log.debug("saving LoyalpointsMaster instance");

@@ -6,10 +6,11 @@ import java.util.List;
 
 import org.hibernate.LockMode;
 import org.hibernate.Query;
+import org.hibernate.Session;
+import org.hibernate.SessionFactory;
 import org.slf4j.Logger;
 import org.slf4j.LoggerFactory;
 
-import com.loyal.persistence.BaseHibernateDAO;
 import com.loyal.persistence.dto.AlgoTotalbetonproviderDTO;
 
 /**
@@ -23,7 +24,7 @@ import com.loyal.persistence.dto.AlgoTotalbetonproviderDTO;
  * @see com.AlgoTotalbetonproviderDTO.hibernate.AlgoTotalbetonprovider
  * @author MyEclipse Persistence Tools
  */
-public class AlgoTotalbetonproviderDAO extends BaseHibernateDAO {
+public class AlgoTotalbetonproviderDAO {
 	private static final Logger log = LoggerFactory
 			.getLogger(AlgoTotalbetonproviderDAO.class);
 	// property constants
@@ -33,6 +34,21 @@ public class AlgoTotalbetonproviderDAO extends BaseHibernateDAO {
 	public static final String BET_AMOUNT = "betAmount";
 	public static final String NO_OF_DAYS = "noOfDays";
 
+	 private SessionFactory sessionFactory;
+
+     public SessionFactory getSessionFactory() {
+             return sessionFactory;
+     }
+
+     public void setSessionFactory(SessionFactory sessionFactory) {
+             this.sessionFactory = sessionFactory;
+     }
+
+     private Session getSession() {
+             return sessionFactory.getCurrentSession();
+     }
+
+	
 	public void save(AlgoTotalbetonproviderDTO transientInstance) {
 		log.debug("saving AlgoTotalbetonprovider instance");
 		try {

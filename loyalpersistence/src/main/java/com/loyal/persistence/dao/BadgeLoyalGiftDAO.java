@@ -6,10 +6,11 @@ import java.util.List;
 
 import org.hibernate.LockMode;
 import org.hibernate.Query;
+import org.hibernate.Session;
+import org.hibernate.SessionFactory;
 import org.slf4j.Logger;
 import org.slf4j.LoggerFactory;
 
-import com.loyal.persistence.BaseHibernateDAO;
 import com.loyal.persistence.dto.BadgeLoyalGiftDTO;
 
 /**
@@ -23,13 +24,28 @@ import com.loyal.persistence.dto.BadgeLoyalGiftDTO;
  * @see com.BadgeLoyalGiftDTO.hibernate.BadgeLoyalGift
  * @author MyEclipse Persistence Tools
  */
-public class BadgeLoyalGiftDAO extends BaseHibernateDAO {
+public class BadgeLoyalGiftDAO {
 	private static final Logger log = LoggerFactory
 			.getLogger(BadgeLoyalGiftDAO.class);
 	// property constants
 	public static final String BADGE_ID = "badgeId";
 	public static final String LOYAL_GIFT_ID = "loyalGiftId";
 
+	 private SessionFactory sessionFactory;
+
+     public SessionFactory getSessionFactory() {
+             return sessionFactory;
+     }
+
+     public void setSessionFactory(SessionFactory sessionFactory) {
+             this.sessionFactory = sessionFactory;
+     }
+
+     private Session getSession() {
+             return sessionFactory.getCurrentSession();
+     }
+
+	
 	public void save(BadgeLoyalGiftDTO transientInstance) {
 		log.debug("saving BadgeLoyalGift instance");
 		try {
