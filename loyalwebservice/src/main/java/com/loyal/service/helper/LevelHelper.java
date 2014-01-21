@@ -12,18 +12,18 @@ import com.loyal.service.pojo.Level;
 public class LevelHelper {
 
 	@Autowired
-	public LevelMasterDAO levelDAO;
+	public LevelMasterDAO levelMasterDAO;
 	
-	public LevelMasterDAO getLevelDAO() {
-		return levelDAO;
+	public LevelMasterDAO getLevelMasterDAO() {
+		return levelMasterDAO;
 	}
 
-	public void setLevelDAO(LevelMasterDAO levelDAO) {
-		this.levelDAO = levelDAO;
+	public void setLevelMasterDAO(LevelMasterDAO levelMasterDAO) {
+		this.levelMasterDAO = levelMasterDAO;
 	}
 
 	public Level retrieveLevelDetails(Integer levelID){
-		LevelMasterDTO levelDTO = levelDAO.findById(levelID);
+		LevelMasterDTO levelDTO = levelMasterDAO.findById(levelID);
 		
 		if(levelDTO != null){
 			return convertDTOToObject(levelDTO);
@@ -37,14 +37,14 @@ public class LevelHelper {
 		
 		if(level !=null){
 			levelDTO = convertObjToDTO(level);
-			levelDAO.save(levelDTO);
+			levelMasterDAO.save(levelDTO);
 		}
 	}
 	
 	public List<Level> retrieveAllLevels(){
 		List<Level> levelList = new ArrayList<Level>();
 		
-		for(LevelMasterDTO levelDTO : levelDAO.findAll()){
+		for(LevelMasterDTO levelDTO : levelMasterDAO.findAll()){
 			levelList.add(convertDTOToObject(levelDTO));
 		} 
 		return levelList;

@@ -22,13 +22,13 @@ import com.loyal.service.pojo.Player;
 public class PlayerHelper {
 
 	@Autowired
-	public PlayersMasterDAO playersDAO;
+	public PlayersMasterDAO playersMasterDAO;
 
 	@Autowired
 	public PlayersLevelDAO playersLevelDAO;
 	
 	@Autowired
-	public LevelMasterDAO levelDAO;
+	public LevelMasterDAO levelMasterDAO;
 	
 	@Autowired
 	public PlayersBadgeDAO playersBadgeDAO;
@@ -41,23 +41,23 @@ public class PlayerHelper {
 		this.playersBadgeDAO = playersBadgeDAO;
 	}
 
-	public LevelMasterDAO getLevelDAO() {
-		return levelDAO;
+	public LevelMasterDAO getLevelMasterDAO() {
+		return levelMasterDAO;
 	}
 
-	public void setLevelDAO(LevelMasterDAO levelDAO) {
-		this.levelDAO = levelDAO;
+	public void setLevelMasterDAO(LevelMasterDAO levelMasterDAO) {
+		this.levelMasterDAO = levelMasterDAO;
 	}
 
 	@Autowired
 	public PlayersLoyalpointsDAO playersLoyalPointsDAO;
 
-	public PlayersMasterDAO getPlayersDAO() {
-		return playersDAO;
+	public PlayersMasterDAO getPlayersMasterDAO() {
+		return playersMasterDAO;
 	}
 
-	public void setPlayersDAO(PlayersMasterDAO playersDAO) {
-		this.playersDAO = playersDAO;
+	public void setPlayersMasterDAO(PlayersMasterDAO playersMasterDAO) {
+		this.playersMasterDAO = playersMasterDAO;
 	}
 
 	public PlayersLevelDAO getPlayersLevelDAO() {
@@ -79,7 +79,7 @@ public class PlayerHelper {
 
 	public Player getPlayerDetails(String userID){
 		Player player = new Player();
-		List<PlayersMasterDTO> playersDTOList = playersDAO.findByExternalUserId(userID);
+		List<PlayersMasterDTO> playersDTOList = playersMasterDAO.findByExternalUserId(userID);
 		if(playersDTOList !=null && !playersDTOList.isEmpty()){
 			//Player UserID
 			player.setUserID(userID);

@@ -59,7 +59,7 @@
 	</bean>
 	
 	<bean id="algorithmHelper" class="com.loyal.service.helper.AlgorithmHelper">
-		<property name="algorithmDAO" ref="algorithmMasterDAO" />
+		<property name="algorithmMasterDAO" ref="algorithmMasterDAO" />
 		<property name="algoTotalbetonproviderDAO" ref="algoTotalbetonproviderDAO" />
 		<property name="algoTotalRoundsOnGameDAO" ref="algoTotalRoundsOnGameDAO" />
 	</bean>
@@ -76,7 +76,30 @@
 	<bean id="loyalGiftsHelper" class="com.loyal.service.helper.LoyalGiftsHelper">
 		<property name="loyalGiftsDAO" ref="loyalGiftsDAO" />
 	</bean>
+	
+	<bean id="playerHelper" class="com.loyal.service.helper.PlayerHelper">
+		<property name="playersMasterDAO" ref="playersMasterDAO" />
+		<property name="playersLevelDAO" ref="playersLevelDAO" />
+		<property name="levelMasterDAO" ref="levelMasterDAO" />
+		<property name="playersBadgeDAO" ref="playersBadgeDAO" />
+	</bean>
+	
+	<bean id="playersLoyalpointDAO" class="com.loyal.persistence.dao.PlayersLoyalpointsDAO">
+		<property name="sessionFactory" ref="sessionFactory"></property>
+	</bean>
 
+	<bean id="playersMasterDAO" class="com.loyal.persistence.dao.PlayersMasterDAO">
+		<property name="sessionFactory" ref="sessionFactory"></property>
+	</bean>
+	
+	<bean id="playersBadgeDAO" class="com.loyal.persistence.dao.PlayersBadgeDAO">
+		<property name="sessionFactory" ref="sessionFactory"></property>
+	</bean>
+	
+	<bean id="playersLevelDAO" class="com.loyal.persistence.dao.PlayersLevelDAO">
+		<property name="sessionFactory" ref="sessionFactory"></property>
+	</bean>
+	
 	<bean id="badgeDetailDAO" class="com.loyal.persistence.dao.BadgeDetailsDAO">
 		<property name="sessionFactory" ref="sessionFactory"></property>
 	</bean>
