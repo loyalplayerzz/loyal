@@ -3,6 +3,7 @@
 	<modelVersion>4.0.0</modelVersion>
 	<groupId>com.loyal.calculate</groupId>
 	<artifactId>loyalcalculate</artifactId>
+	<packaging>jar</packaging>
 	<name>loyalcalculate</name>
 	<description>LoyalPoints calculation</description>
 	<parent>
