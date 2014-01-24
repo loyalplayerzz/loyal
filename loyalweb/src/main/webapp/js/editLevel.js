@@ -17,7 +17,7 @@ $(document).ready(function() {
 			var levelPoints = resp.Data.levelPoints;
 			$("#level_number").val(levelPoints);
 
-		},
+		}
 	/*
 	 * error:function(resp){ alert("Error while trying to create Level"); }
 	 */
