@@ -29,7 +29,7 @@ $(document)
 
 										$
 												.ajax({
-													url : "http://localhost:8080/LoyalService/rest/loyalgifts/create",
+													url : "http://localhost:8080/loyalservice/rest/loyalgifts/create",
 													type : "POST",
 													dataType : "json",
 													data : JsonData,

@@ -48,7 +48,7 @@ $(document)
 
 										$
 												.ajax({
-													url : "http://localhost:8080/LoyalService/rest/loyalpoints/create",
+													url : "http://localhost:8080/loyalservice/rest/loyalpoints/create",
 													type : "POST",
 													dataType : "json",
 													data : JsonData,

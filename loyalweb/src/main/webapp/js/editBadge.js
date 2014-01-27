@@ -10,7 +10,7 @@ $(document)
 									+ "<option value='3'>Provider 3</option>");
 					
 					$.ajax({
-						url : "http://localhost:8080/LoyalService/rest/level/retrieve/"+getJsonFromUrl(),
+						url : "http://localhost:8080/loyalservice/rest/level/retrieve/"+getJsonFromUrl(),
 						type : "GET",
 						dataType : "json",
 						data : JsonData,

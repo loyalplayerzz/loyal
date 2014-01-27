@@ -11,7 +11,7 @@ $(document)
 									+ "<option value='5'>Level 5</option>");
 					
 					$.ajax({
-						url : "http://localhost:8080/LoyalService/rest/level/retrieve/"+getJsonFromUrl(),
+						url : "http://localhost:8080/loyalservice/rest/level/retrieve/"+getJsonFromUrl(),
 						type : "GET",
 						dataType : "json",
 						data : JsonData,
@@ -55,7 +55,7 @@ $(document)
 
 										$
 												.ajax({
-													url : "http://localhost:8080/LoyalService/rest/loyalgifts/update",
+													url : "http://localhost:8080/loyalservice/rest/loyalgifts/update",
 													type : "POST",
 													dataType : "json",
 													data : JsonData,

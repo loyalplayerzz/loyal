@@ -75,7 +75,7 @@ public class LevelMasterDAO {
 		log.debug("getting LevelMaster instance with id: " + id);
 		try {
 			LevelMasterDTO instance = (LevelMasterDTO) getSession().get(
-					LevelMasterDAO.class, id);
+					LevelMasterDTO.class, id);
 			return instance;
 		} catch (RuntimeException re) {
 			log.error("get failed", re);
@@ -97,7 +97,7 @@ public class LevelMasterDAO {
 		log.debug("finding LevelMaster instance by example");
 		try {
 			List<LevelMasterDTO> results = (List<LevelMasterDTO>) getSession()
-					.createCriteria("com.test.hibernate.LevelMaster")
+					.createCriteria(LevelMasterDTO.class)
 					.add(create(instance)).list();
 			log.debug("find by example successful, result size: "
 					+ results.size());
@@ -138,7 +138,7 @@ public class LevelMasterDAO {
 	public List<LevelMasterDTO> findAll() {
 		log.debug("finding all LevelMaster instances");
 		try {
-			String queryString = "from LevelMaster";
+			String queryString = "from LevelMasterDTO";
 			Query queryObject = getSession().createQuery(queryString);
 			return queryObject.list();
 		} catch (RuntimeException re) {

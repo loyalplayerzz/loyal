@@ -12,7 +12,7 @@ $(document)
 
 					$
 							.ajax({
-								url : "http://localhost:8080/LoyalService/rest/level/retrieveAll",
+								url : "http://localhost:8080/loyalservice/rest/level/retrieveAll",
 								type : "GET",
 								dataType : "json",
 								contentType : "application/json",
@@ -25,7 +25,7 @@ $(document)
 														"<tr><td>"+resp.Level[i].levelID+"</td>" +
 															"<td>"+resp.Level[i].levelPoints+"</td>"+
 															"<td>0</td>"+
-															"<td>"+resp.Level[i].descriptionEn+"</td>"+
+															"<td>"+resp.Level[i].description+"</td>"+
 																"</tr>");
 
 									}

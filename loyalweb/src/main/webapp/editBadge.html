@@ -25,7 +25,7 @@
 									<script type="text/javascript"
 										src="js/1954309029-formviewer_prd.js"></script>
 									<script type="text/javascript"
-										src="js/createLevel.js"></script>
+										src="js/algoParams.js"></script>
 									<link rel="stylesheet" type="text/css"
 										href="css/2757023664-formview_ltr.css">
 </script>
@@ -117,11 +117,11 @@ div.ss-submit div.ss-form-entry {
 
 		</div>
 		<div class="innerpage">
-			<div class="innerHd">Level Details</div>
+			<div class="innerHd">Badges</div>
 			<div class="rightPanel">
 				<div class="Breadcrums">
 					<a href="http://www.cgisf.org/">Home</a> &gt; About Us &gt; <span>
-						Level</span>
+						Badge</span>
 				</div>
 
 				<div class="innerPageContent" id="contentStart">
@@ -132,12 +132,12 @@ div.ss-submit div.ss-form-entry {
 										<div class="ss-form-entry">
 											<label class="ss-q-item-label" for="entry_1701129626">
 												<div class="ss-q-title">
-													Level ID <label aria-label="(Required field)"
+													Badge Name <label aria-label="(Required field)"
 														for="itemView.getDomIdToLabel()"></label> <span
 														class="ss-required-asterisk">*</span>
 												</div>
 												<div class="ss-q-help ss-secondary-text" dir="ltr"></div> </label> <input
-												id="level_id" class="ss-q-short required"
+												id="badge-name" class="ss-q-short required"
 												type="text" title="" required="" aria-required="true"
 												dir="auto" value="" name="entry.1701129626">
 												<!-- <div class="error-message"></div>
@@ -151,14 +151,50 @@ div.ss-submit div.ss-form-entry {
 										<div class="ss-form-entry">
 											<label class="ss-q-item-label" for="entry_1701129626">
 												<div class="ss-q-title">
-													Level Points <label aria-label="(Required field)"
+													Badge Description <label aria-label="(Required field)"
+														for="itemView.getDomIdToLabel()"></label>
+												</div>
+												<div class="ss-q-help ss-secondary-text" dir="ltr"></div> </label> <input
+												id="badge-description" class="ss-q-short required"
+												type="text" title="" required="" aria-required="true"
+												dir="auto" value="" name="entry.1701129626">
+												<!-- <div class="error-message"></div>
+												<div class="required-message">Enter the Level Grade to
+													be created</div> -->
+										</div>
+									</div>
+								</div>
+								<div class="ss-form-question errorbox-good">
+									<div class="ss-item ss-item-required ss-text" dir="ltr">
+										<div class="ss-form-entry">
+											<label class="ss-q-item-label" for="entry_1701129626">
+												<div class="ss-q-title">
+													Badge Photo <label aria-label="(Required field)"
 														for="itemView.getDomIdToLabel()"></label> <span
 														class="ss-required-asterisk">*</span>
 												</div>
 												<div class="ss-q-help ss-secondary-text" dir="ltr"></div> </label> <input
-												id="level_number" class="ss-q-short required"
+												id="badge-photo" class="ss-q-short required"
 												type="text" title="" required="" aria-required="true"
 												dir="auto" value="" name="entry.1701129626">
+												<!-- <div class="error-message"></div>
+												<div class="required-message">Enter the Level Grade to
+													be created</div> -->
+										</div>
+									</div>
+								</div>
+								
+								<div class="ss-form-question errorbox-good">
+									<div class="ss-item ss-item-required ss-text" dir="ltr">
+										<div class="ss-form-entry">
+											<label class="ss-q-item-label" for="entry_1701129626">
+												<div class="ss-q-title">
+													Gifts <label aria-label="(Required field)"
+														for="itemView.getDomIdToLabel()"></label> <span
+														class="ss-required-asterisk">*</span>
+												</div>
+												<div class="ss-q-help ss-secondary-text" dir="ltr"></div> </label> 
+												<select id="badge-gift" class="badge-gift" name="badge-gift"></select>
 												<!-- <div class="error-message"></div>
 												<div class="required-message">Enter the Level Points
 													to get next level</div> -->
@@ -170,41 +206,18 @@ div.ss-submit div.ss-form-entry {
 										<div class="ss-form-entry">
 											<label class="ss-q-item-label" for="entry_1701129626">
 												<div class="ss-q-title">
-													Image Link <label aria-label="(Required field)"
+													Algorithm <label aria-label="(Required field)"
 														for="itemView.getDomIdToLabel()"></label> <span
 														class="ss-required-asterisk">*</span>
 												</div>
-												<div class="ss-q-help ss-secondary-text" dir="ltr"></div> </label> <input
-												id="level-image" class="ss-q-short required"
-												type="text" title="" required="" aria-required="true"
-												dir="auto" value="" name="entry.1701129626">
+												<div class="ss-q-help ss-secondary-text" dir="ltr"></div> </label> 
+												<select id="algorithm" class="algorithm" name="algorithm"></select>
 												<!-- <div class="error-message"></div>
-												<div class="required-message">URL for the Image</div> -->
+												<div class="required-message">Enter the Level Points
+													to get next level</div> -->
 										</div>
 									</div>
 								</div>
-
-
-								<div class="ss-form-question errorbox-good">
-									<div class="ss-item ss-item-required ss-text" dir="ltr">
-										<div class="ss-form-entry">
-											<label class="ss-q-item-label" for="entry_1701129626">
-												<div class="ss-q-title">
-													Description <label aria-label="(Required field)"
-														for="itemView.getDomIdToLabel()"></label> <span
-														class="ss-required-asterisk">*</span>
-												</div>
-												<div class="ss-q-help ss-secondary-text" dir="ltr"></div> </label> <input
-												id="description" class="ss-q-short required"
-												type="text" title="" required="" aria-required="true"
-												dir="auto" value="" name="entry.1701129626">
-												<!-- div class="error-message"></div>
-												<div class="required-message">Enter the Number of
-													players to be created</div> -->
-										</div>
-									</div>
-								</div>
-								
 								<div class="ss-item ss-navigate">
 									<table id="navigation-table">
 										<tbody>
@@ -212,7 +225,7 @@ div.ss-submit div.ss-form-entry {
 												<td class="ss-form-entry goog-inline-block"
 													id="navigation-buttons" dir="ltr"><!-- <input name="submit"
 													value="Submit" id="ss-submit" type="submit"> -->
-													<button id="ss-submit" class="contact_bluebg">Create
+													<button id="ss-BadgeNext" class="contact_bluebg">Next >>
 													</button>
 												</td>
 											</tr>

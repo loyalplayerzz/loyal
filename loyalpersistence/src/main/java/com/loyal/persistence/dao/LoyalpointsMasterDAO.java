@@ -75,7 +75,7 @@ public class LoyalpointsMasterDAO {
 		log.debug("getting LoyalpointsMaster instance with id: " + id);
 		try {
 			LoyalpointsMasterDTO instance = (LoyalpointsMasterDTO) getSession().get(
-					"com.test.hibernate.LoyalpointsMaster", id);
+					LoyalpointsMasterDTO.class, id);
 			return instance;
 		} catch (RuntimeException re) {
 			log.error("get failed", re);
@@ -87,7 +87,7 @@ public class LoyalpointsMasterDAO {
 		log.debug("finding LoyalpointsMaster instance by example");
 		try {
 			List<LoyalpointsMasterDTO> results = (List<LoyalpointsMasterDTO>) getSession()
-					.createCriteria("com.test.hibernate.LoyalpointsMaster")
+					.createCriteria(LoyalpointsMasterDTO.class)
 					.add(create(instance)).list();
 			log.debug("find by example successful, result size: "
 					+ results.size());
@@ -128,7 +128,7 @@ public class LoyalpointsMasterDAO {
 	public List<LoyalpointsMasterDTO> findAll() {
 		log.debug("finding all LoyalpointsMaster instances");
 		try {
-			String queryString = "from LoyalpointsMaster";
+			String queryString = "from LoyalpointsMasterDTO";
 			Query queryObject = getSession().createQuery(queryString);
 			return queryObject.list();
 		} catch (RuntimeException re) {

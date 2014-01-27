@@ -33,7 +33,7 @@ $(document)
 					
 					$
 					.ajax({
-						url : "http://localhost:8080/LoyalService/rest/loyalpoints/retrieveAll",
+						url : "http://localhost:8080/loyalservice/rest/loyalpoints/retrieveAll",
 						type : "GET",
 						dataType : "json",
 						contentType : "application/json",

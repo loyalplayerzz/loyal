@@ -1,6 +1,6 @@
 $(document).ready(function() {
 	$.ajax({
-		url : "http://localhost:8080/LoyalService/rest/level/retrieve/"+getJsonFromUrl(),
+		url : "http://localhost:8080/loyalservice/rest/level/retrieve/"+getJsonFromUrl(),
 		type : "GET",
 		dataType : "json",
 		data : JsonData,
@@ -34,7 +34,7 @@ $(document).ready(function() {
 		var JsonData = JSON.stringify(obj);
 
 		$.ajax({
-			url : "http://localhost:8080/LoyalService/rest/level/update",
+			url : "http://localhost:8080/loyalservice/rest/level/update",
 			type : "PUT",
 			dataType : "json",
 			data : JsonData,
