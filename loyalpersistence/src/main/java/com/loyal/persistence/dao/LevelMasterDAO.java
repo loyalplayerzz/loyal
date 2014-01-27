@@ -75,7 +75,7 @@ public class LevelMasterDAO {
 		log.debug("getting LevelMaster instance with id: " + id);
 		try {
 			LevelMasterDTO instance = (LevelMasterDTO) getSession().get(
-					"com.test.hibernate.LevelMaster", id);
+					LevelMasterDAO.class, id);
 			return instance;
 		} catch (RuntimeException re) {
 			log.error("get failed", re);

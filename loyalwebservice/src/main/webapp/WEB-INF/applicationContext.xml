@@ -26,7 +26,7 @@
 
 	<bean id="dataSource"
 		class="org.springframework.jdbc.datasource.DriverManagerDataSource">
-		<property name="url" value="jdbc:mysql://localhost:3306/mysql" />
+		<property name="url" value="jdbc:mysql://localhost:3306/loyal" />
 		<property name="driverClassName" value="com.mysql.jdbc.Driver" />
 		<property name="username" value="loyal" />
 		<property name="password" value="loyal123" />
