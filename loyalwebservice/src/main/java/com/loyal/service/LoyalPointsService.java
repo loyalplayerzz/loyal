@@ -7,6 +7,7 @@ import java.util.Map;
 import javax.ws.rs.Consumes;
 import javax.ws.rs.GET;
 import javax.ws.rs.POST;
+import javax.ws.rs.PUT;
 import javax.ws.rs.Path;
 import javax.ws.rs.PathParam;
 import javax.ws.rs.Produces;
@@ -34,6 +35,17 @@ public class LoyalPointsService {
 
 	public void setLoyalPointsHelper(LoyalPointsHelper loyalPointsHelper) {
 		this.loyalpointsHelper = loyalPointsHelper;
+	}
+	
+	@PUT
+	@Path("/update")
+	@Produces(MediaType.APPLICATION_JSON)
+	@Consumes(MediaType.APPLICATION_JSON)
+	public Response updateLoyalPoint(LoyalPoints loyalPoints) {
+		System.out.println("Loyal Points"+loyalPoints.getLoyalPoints());
+		loyalpointsHelper.updateLoyalPoints(loyalPoints);
+		String s = "success";
+		return Response.status(200).entity(s).build();
 	}
 
 	@POST

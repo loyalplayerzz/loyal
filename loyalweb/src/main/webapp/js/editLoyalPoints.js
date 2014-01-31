@@ -33,20 +33,23 @@ $(document)
 					
 					$
 					.ajax({
-						url : "http://localhost:8080/loyalservice/rest/loyalpoints/retrieveAll",
+						url : "http://localhost:8080/loyalservice/rest/loyalpoints/retrieve/"+getJsonFromUrl(),
 						type : "GET",
 						dataType : "json",
 						contentType : "application/json",
 						success : function(resp) {
 							console.log(resp);
-							var loyalpoints = obj["loyalPoints"];
+							var loyalpoints = resp.LoyalPoints.loyalPoints;
 							$("#loyalpoints-loyal").val(loyalpoints);
 							
-							var currencyType = obj["currencyType"];
+							var currencyType = resp.LoyalPoints.currencyType;
 							$("#loyalpoints-currency").val(currencyType);
 							
-							var bet = obj["bet"];
-							$("##loyalpoints-bet").val(bet);
+							var bet = resp.LoyalPoints.bet;
+							$("#loyalpoints-bet").val(bet);
+							
+							var loyalID = resp.LoyalPoints.loyalPointsID;
+							$("#loyalpoints-loyalID").val(loyalID);
 						},
 					});
 
@@ -61,13 +64,13 @@ $(document)
 												"#loyalpoints-currency").val();
 										obj["bet"] = $("#loyalpoints-bet")
 												.val();
-
+										obj["loyalPointsID"] = $('#loyalpoints-loyalID').val();
 										var JsonData = JSON.stringify(obj);
 										alert(JsonData);
 
 										$
 												.ajax({
-													url : "http://localhost:8080/LoyalService/rest/loyalpoints/update",
+													url : "http://localhost:8080/loyalservice/rest/loyalpoints/update",
 													type : "PUT",
 													dataType : "json",
 													data : JsonData,
@@ -81,3 +84,17 @@ $(document)
 									});
 
 				});
+
+function getJsonFromUrl() {
+
+	var query = location.search.substr(1);
+	var data = query.split("&");
+	//var result = {};
+	for ( var i = 0; i < data.length; i++) {
+		var item = data[i].split("=");
+		if (item[0] == "loyalPointsID") {
+			loyalPointID = item[1];
+		}
+	}
+	return loyalPointID;
+}

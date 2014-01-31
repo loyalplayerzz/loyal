@@ -2,6 +2,16 @@ package com.loyal.service.pojo;
 
 public class LoyalPoints {
 	
+	private Integer loyalPointsID;
+	
+	public Integer getLoyalPointsID() {
+		return loyalPointsID;
+	}
+
+	public void setLoyalPointsID(Integer loyalPointsID) {
+		this.loyalPointsID = loyalPointsID;
+	}
+
 	private Integer bet;
 	
 	private String currencyType;

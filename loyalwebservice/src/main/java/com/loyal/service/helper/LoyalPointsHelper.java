@@ -41,6 +41,15 @@ public class LoyalPointsHelper {
 		}
 	}
 	
+	public void updateLoyalPoints(LoyalPoints loyalPoints){
+		LoyalpointsMasterDTO loyalPointsDTO = null;
+		
+		if(loyalPoints !=null){
+			loyalPointsDTO = convertObjToDTO(loyalPoints);
+			loyalPointsDAO.merge(loyalPointsDTO);
+		}
+	}
+	
 	public List<LoyalPoints> retrieveAllLoyalPoints(){
 		List<LoyalPoints> loyalPointsList = new ArrayList<LoyalPoints>();
 		
@@ -53,6 +62,7 @@ public class LoyalPointsHelper {
 	public LoyalPoints convertDTOToObject(LoyalpointsMasterDTO loyalpointsDTO){
 		LoyalPoints loyalPoints = new LoyalPoints();
 		loyalPoints.setBet(loyalpointsDTO.getBet());
+		loyalPoints.setLoyalPointsID(loyalpointsDTO.getId());
 		loyalPoints.setCurrencyType(loyalpointsDTO.getCurrency());
 		loyalPoints.setLoyalPoints(loyalpointsDTO.getPoints());
 		
@@ -62,6 +72,7 @@ public class LoyalPointsHelper {
 	public LoyalpointsMasterDTO convertObjToDTO(LoyalPoints loyalPoints){
 		LoyalpointsMasterDTO loyalpointsDTO = new LoyalpointsMasterDTO();
 		loyalpointsDTO.setBet(loyalPoints.getBet());
+		loyalpointsDTO.setId(loyalPoints.getLoyalPointsID());
 		loyalpointsDTO.setPoints(loyalPoints.getLoyalPoints());
 		loyalpointsDTO.setCurrency(loyalPoints.getCurrencyType());
 		
