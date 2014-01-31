@@ -3,18 +3,18 @@ $(document).ready(function() {
 		url : "http://localhost:8080/loyalservice/rest/level/retrieve/"+getJsonFromUrl(),
 		type : "GET",
 		dataType : "json",
-		data : JsonData,
+		//data : JsonData,
 		contentType : "application/json",
 		success : function(resp) {
-			var levelID = resp.Data.levelID;
+			var levelID = resp.Level.levelID;
 			$("#level_id").val(levelID);
 
-			var providerID = resp.Data.providerID;
+			var providerID = resp.Level.providerID;
 			$("#provider-select").val(providerID);
 
-			var description = resp.Data.description;
+			var description = resp.Level.description;
 			$("#description").val(description);
-			var levelPoints = resp.Data.levelPoints;
+			var levelPoints = resp.Level.levelPoints;
 			$("#level_number").val(levelPoints);
 
 		}
@@ -27,8 +27,7 @@ $(document).ready(function() {
 	$("#ss-submit").on("click", function(e) {
 		var obj = {};
 		obj["levelID"] = $("#level_id").val();
-		obj["descriptionEn"] = $("#desc_en").val();
-		obj["descriptionSV"] = $("#desc_sv").val();
+		obj["description"] = $("#description").val();
 		obj["levelPoints"] = $("#level_number").val();
 		obj["image"] = $("#level-image").val();
 		var JsonData = JSON.stringify(obj);
@@ -53,12 +52,12 @@ function getJsonFromUrl() {
 
 	var query = location.search.substr(1);
 	var data = query.split("&");
-	var result = {};
+	//var result = {};
 	for ( var i = 0; i < data.length; i++) {
 		var item = data[i].split("=");
 		if (item[0] == "levelID") {
-			badgeName = item[1];
+			levelName = item[1];
 		}
 	}
-	return result;
+	return levelName;
 }

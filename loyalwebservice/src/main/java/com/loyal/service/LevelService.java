@@ -7,6 +7,7 @@ import java.util.Map;
 import javax.ws.rs.Consumes;
 import javax.ws.rs.GET;
 import javax.ws.rs.POST;
+import javax.ws.rs.PUT;
 import javax.ws.rs.Path;
 import javax.ws.rs.PathParam;
 import javax.ws.rs.Produces;
@@ -43,6 +44,18 @@ public class LevelService {
 	public Response addNewLevel(Level level) {
 		System.out.println("Level ID "+level.getLevelID());
 		levelHelper.createLevel(level);
+		String s = "success";
+		return Response.status(200).entity(s).build();
+	}
+	
+
+	@PUT
+	@Path("/update")
+	@Produces(MediaType.APPLICATION_JSON)
+	@Consumes(MediaType.APPLICATION_JSON)
+	public Response updateLevel(Level level) {
+		System.out.println("Level ID "+level.getLevelID());
+		levelHelper.updateLevel(level);
 		String s = "success";
 		return Response.status(200).entity(s).build();
 	}

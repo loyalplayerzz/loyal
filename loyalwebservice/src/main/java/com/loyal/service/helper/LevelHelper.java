@@ -41,6 +41,15 @@ public class LevelHelper {
 		}
 	}
 	
+	public void updateLevel(Level level){
+		LevelMasterDTO levelDTO = null;
+		
+		if(level !=null){
+			levelDTO = convertObjToDTO(level);
+			levelMasterDAO.merge(levelDTO);
+		}
+	}
+	
 	public List<Level> retrieveAllLevels(){
 		List<Level> levelList = new ArrayList<Level>();
 		

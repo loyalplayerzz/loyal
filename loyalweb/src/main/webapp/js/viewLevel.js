@@ -18,11 +18,13 @@ $(document)
 								contentType : "application/json",
 								success : function(resp) {
 									console.log(resp);
-									for (i = 0; i <= resp.Level.length; i++) {
-
+									for (i = 0; i < resp.Level.length; i++) {
+										var levelKey = resp.Level[i].levelID;
+										var editURL = "/loyalweb/editLevel.html?levelID="+levelKey
+										
 										$("#level-table > tbody")
 												.append(
-														"<tr><td>"+resp.Level[i].levelID+"</td>" +
+														"<tr><td><a href = "+editURL+"> "+levelKey+"</a></td>" +
 															"<td>"+resp.Level[i].levelPoints+"</td>"+
 															"<td>0</td>"+
 															"<td>"+resp.Level[i].description+"</td>"+
