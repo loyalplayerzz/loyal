@@ -3,31 +3,33 @@ $(document)
 				function() {
 
 					var obj = {};
-					obj["levelID"] = $("#level_id").val();
-					obj["descriptionEn"] = $("#desc_en").val();
-					obj["descriptionSV"] = $("#desc_sv").val();
+					obj["name"] = $("#level_id").val();
+					obj["giftType"] = $("#desc_en").val();
+					obj["description"] = $("#desc_sv").val();
 					obj["levelPoints"] = $("#level_number").val();
 					obj["image"] = "true";
 					var JsonData = JSON.stringify(obj);
-					
+
 					$
 							.ajax({
-								url : getHostURL()+"/level/retrieveAll",
+								url : getHostURL+"/loyalgift/retrieveAll",
 								type : "GET",
 								dataType : "json",
 								contentType : "application/json",
 								success : function(resp) {
 									console.log(resp);
 									for (i = 0; i < resp.Level.length; i++) {
-										var levelKey = resp.Level[i].levelID;
-										var editURL = "/loyalweb/editLevel.html?levelID="+levelKey
+										var loyalgiftID = resp.LoyalGifts[i].id;
+										var editURL = "/loyalweb/editLoyalGifts.html?loyalGiftID="+loyalgiftID;
 										
 										$("#level-table > tbody")
 												.append(
-														"<tr><td><a href = "+editURL+"> "+levelKey+"</a></td>" +
-															"<td>"+resp.Level[i].levelPoints+"</td>"+
-															"<td>0</td>"+
-															"<td>"+resp.Level[i].description+"</td>"+
+														"<tr><td><a href = "+editURL+"> "+resp.LoyalGifts[i].name+"</a></td>" +
+															"<td>"+resp.LoyalGifts[i].giftType+"</td>"+
+															"<td>"+resp.LoyalGifts[i].description+"</td>"+
+															"<td>"+resp.LoyalGifts[i].levelPoints+"</td>"+
+															"<td>"+resp.LoyalGifts[i].image+"</td>"+
+															"<td>"+resp.LoyalGifts[i].levelPoints+"</td>"+
 																"</tr>");
 
 									}

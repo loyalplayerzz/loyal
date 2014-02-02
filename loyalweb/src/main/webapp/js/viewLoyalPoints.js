@@ -4,7 +4,7 @@ $(document)
 
 					$
 							.ajax({
-								url : "http://localhost:8080/loyalservice/rest/loyalpoints/retrieveAll",
+								url : getHostURL() + "/loyalpoints/retrieveAll",
 								type : "GET",
 								dataType : "json",
 								contentType : "application/json",
@@ -25,3 +25,20 @@ $(document)
 								},
 							});
 				}); /* End of Script */
+
+function getHostURL(){
+	var loc = window.location.protocol;
+    /*Store the environment host that the application is in*/
+    hostUri = window.location.host;
+
+    /*split the path and store in an array*/
+    var pathArray = window.location.pathname.split('/');
+
+    /*Retrieve the URI to be passed and store in a variable*/
+    var contextURI = pathArray[1];
+
+    /*Following would be the root URL for DEAMockWeb*/
+    var restBaseUrl = loc + "//" + hostUri + "/" + "loyalservice/rest";
+    
+    return restBaseUrl;
+}
