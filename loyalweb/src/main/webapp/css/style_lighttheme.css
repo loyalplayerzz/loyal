@@ -1,0 +1,63 @@
+body {
+		background: url("../images/front/bodyBg.jpg") no-repeat scroll center 0 #F8F8F8;
+		color: #515151;
+}
+
+.mainContainer {
+	background: #fff;
+	-webkit-box-shadow: #CCC 0 0 .25em;
+	-moz-box-shadow: #CCC 0 0 .25em;
+	box-shadow: #CCC 0 0 .25em;
+}
+h1 {
+	color: #3779BA;
+}
+#HdrLogo .logo_text h1{ color:#10365d;}
+#HdrLogo .logo_text span{color:#000;}
+.featureBlock {
+	background: #f1f1f1;
+}
+.featureBlock ul li a, .innerpage ul li a {
+	color: #295886;
+	text-decoration: none
+}
+h3,h4 {
+	color: #3779BA;
+}
+.newsPanel .newsListing li h4 a{color:#295886}
+p {
+	color: #515151;
+}
+.newsPanel .newsListing li .date_posted {
+	color: #AAAAAA;
+}
+.header .rightHead .topRow .skipContent a {
+	color: #515151;
+}
+
+.innerPageContent a{ color:#295886;}
+a {
+	color: #474646;
+}
+.content_part h4 a{
+color:#295886;
+}
+.content_part {
+	border-bottom: 2px dotted #EEEEEE;
+}
+.header .rightHead .topRow .screenReader a {
+	color: #515151;
+}
+#HdrLogo {
+ background:url('../images/front/emblem.jpg') no-repeat
+}
+.table_detailpage {
+	color: #545454;
+}
+.featureBlock_usefullinks {
+	background: #f1f1f1;
+}
+.featureBlock_usefullinks ul li a{
+	color: #295886;
+	text-decoration: none
+}
