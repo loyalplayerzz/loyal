@@ -1,0 +1,13 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<project-module
+  type="WEB"
+  name="loyalweb"
+  id="myeclipse.1389224686622"
+  context-root="/loyalweb"
+  j2ee-spec="1.7"
+  archive="loyalweb.war">
+  <attributes>
+    <attribute name="webrootdir" value="src/main/webapp" />
+  </attributes>
+</project-module>
+

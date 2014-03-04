@@ -1,0 +1,13 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<project-module
+  type="WEB"
+  name="PandoraRest"
+  id="myeclipse.1393719857399"
+  context-root="/TwitterRest"
+  j2ee-spec="6.0"
+  archive="PandoraRest.war">
+  <attributes>
+    <attribute name="webrootdir" value="src/main/webapp" />
+  </attributes>
+</project-module>
+
